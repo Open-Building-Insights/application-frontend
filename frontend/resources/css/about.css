@@ -1,0 +1,11 @@
+@import url("styles.css");
+@import url("auxiliary.css");
+
+.partner-logos img,
+.help-section img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+}

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - SEforALL </title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+    <link rel="stylesheet" href="resources/css/methodology.css">
+    <link rel="stylesheet" href="resources/css/auxiliary.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <div class="toggle-container" style="display: none;">
+                <div class="vertical-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mapSwitch">
+                        <span class="slider"></span>
+                        <div class="labels">
+                            <span class="label-top">OBI</span>
+                            <span class="label-bottom">MUG</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+            
+           <div class="nav-footer">
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+
+
+    <div class="top-banner">
+        <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+                class="link-inline-white">We'd love to hear about
+                it!</a>
+        </p>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-banner">
+                    <h1>Methodology</h1>
+                    <h3>of the Custom Classification Model</h3>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p class="page-description">Our objective is to produce high-quality building footprint
+                                data sets, namely a refined settlement data layer,
+                                containing classification of buildings to <b>residential</b> or <b>non-residential</b> 
+                                by leveraging machine learning.</p>
+                            <p>This is achieved by creating a new machine learning architecture based on DenseNet121 
+                                architecture and training this new model leveraging IBM Cloud 
+                                and IBM watsonx AI and data platform.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-content">
+
+                    <div class="spacing-card">
+                        <div class="content-box pos-relative" id="training">
+                            <span class="pin-order">1</span>
+                            <h5>Model Training Approach</h5>
+                            <p>A high-quality training data set is required to to train a machine learning model. The 
+                                classification model used by Open Building Insights leverages a training data set derived 
+                                from publicly available Open Street Map (OSM) and Overturemaps data. Both provide an alternative 
+                                building footprint catalogue that is created by humans and contains auxiliary information 
+                                about buildings, e.g., their type. Given the nature of human-created data, OSM is sparser 
+                                compared to the VIDA-derived data set and contains auxiliary information leading to a very small portion of OSM 
+                                data being actually used to train the machine learning model.</p>
+                            <p>To provide information about the buildings used for model training the training data set,
+                                i.e. ,
+                                those buildings from OSM, which have their type filled, are merged into the VIDA-derived
+                                building
+                                catalogue with their classification determined by OSM instead of the model.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="model-architecture">
+                        <span class="pin-order">2</span>
+                        <h5>Building Classification</h5>
+                        <p>The developed machine learning model is trained on Sentinel-2 satellite images and is capable
+                            of
+                            identifying various building typologies within a geography. The envisioned priority tree for
+                            building classification is shown. By progressing down the
+                            classification tree, the model should be able to classify a broader variety of building
+                            types.
+                            The current state consists of a model operating at the 1st priority level and is therefore
+                            capable of classifying buildings as either <b>residential</b> or <b>non-residential</b>
+                            within
+                            this country area.</p>
+                        <div class="card-placeholder"><img src="resources/images/se-all-2.png" width="100%" /></div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="base-model">
+                        <span class="pin-order">3</span>
+                        <h5>Model Architecture</h5>
+                        <p>A custom neural network architecture based on the DenseNet121 model with preloaded imagenet
+                            weights is chosen as base model for given classification task. The DenseNet121 model is a
+                            specific variant of the DenseNet architecture, which is a convolutional neural network (CNN)
+                            designed for image classification tasks. The model was first introduced in <a
+                                href="https://arxiv.org/abs/1608.06993" target="_blank">Huang et al. (2017)</a>.</p>
+                        <p>The DenseNet architecture is characterized by multiple dense blocks separated by transition
+                            layers, which reduce the feature-map sizes (spatial dimensions, i.e. width and height)
+                            through
+                            convolution and pooling operations. A sketch of such a sequence taken from the original
+                            paper is
+                            shown in Figure 9: Example of a DenseNet architecture. A dense block is constructed such
+                            that
+                            each layer receives input from all preceding layers. Therefore, the feature maps from all
+                            previous layers are concatenated and used as input for the current layer. All layers in the
+                            DenseNet121 base model are set to be trainable. In this way, during training, the weights of
+                            the
+                            layers in the model will be updated to better suit our specific task.</p>
+                        <div class="card-placeholder mb20"><img src="resources/images/se-all-3.png" width="100%" />
+                        </div>
+                        <p>To further refine the custom model, additional input was provided in a form of building
+                            metadata, namely its footprint area and urban classification (based on SMOD), this input
+                            being concatenated to the input image at the first layer.</p>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="model-training">
+                        <span class="pin-order">4</span>
+                        <h5>Training the model</h5>
+                        <p>The main data set for training the model consists of Sentinel-2 Satellite images and part of
+                            the
+                            building footprint catalogue from Open Street Map (OSM), which contains the type of
+                            buildings.
+                            Each building on the Sentinel-2 images is, if also contained in the OSM data, labelled as
+                            either
+                            residential or non-residential. The resulting labelled data set is used for training,
+                            validation
+                            and testing of the model.</p>
+                        <p>The model described in Model Selection and Architecture is trained on a imbalanced data set
+                            consisting of ~95000 images, containing twice as much residential than non-residential
+                            images.
+                            Of all labelled images, 70% are used for training (initial fit) and 20% for validating
+                            (fine-tuning) the model (see section Final Configuration and Results). The remaining 10% are
+                            used for testing (i.e. consist of independent, unseen data). The model configurations are
+                            fine-tuned after validation, as schematically depicted in Figure 10: Schematic overview of
+                            the
+                            model training process, and saved upon achieving satisfactory performance.</p>
+                        <div class="card-placeholder mb30"><img src="resources/images/se-all-4.png" width="100%" />
+                        </div>
+
+
+                        <p class="mb30">The resulting model is then tested using previously unseen data and the model
+                            scores are
+                            computed. The Adam optimizer with a learning rate of 0.001 and the binary cross-entropy
+                            are used
+                            as the optimization algorithm and loss function respectively for training the neural
+                            network.
+                            Furthermore, a learning rate reduction callback is used: This callback will monitor the
+                            validation accuracy and if it stops improving, it will reduce the learning rate to help
+                            the
+                            model converge better. The model is trained for 50 epochs, whereas the training data are
+                            shuffled
+                            before each epoch.</p>
+
+                        <p><b>Kenya</b></p>
+                        <div class="card-placeholder mb50"><img src="resources/images/confusion_matrix_1.png"
+                                width="100%" />
+
+                        </div>
+
+                        <p><b>India</b></p>
+                        <div class="card-placeholder"><img src="resources/images/confusion_matrix_2.png" width="100%" />
+
+                        </div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="data-sources">
+                        <span class="pin-order">5</span>
+                        <h5>Data Sources</h5>
+                        <ul class="card-list">
+                            <li>
+                                <a href="https://registry.opendata.aws/sentinel-2-l2a-cogs/" target="_blank"
+                                    class="heading-link">Sentinel-2
+                                    Cloud-Optimized GeoTIFFs</a>
+                                <br />
+                                <p><a href="https://sentinel.esa.int/web/sentinel/missions/sentinel-2"
+                                        target="_blank">Sentinel-2</a> satellite images are downloaded from the public
+                                    S3
+                                    bucket Sentinel-2 Cloud-Optimized GeoTIFFs containing satellite images of the
+                                    Earth’s surface divided into pre-defined tiles.
+                            </li>
+
+                            <li>
+                                <a href="https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description/"
+                                    target="_blank">Google-Microsoft Open Buildings (combined and published by VIDA)</a><br /> Publicly
+                                available data contain a catalogue of buildings with specific coordinates and polygons
+                                (i.e.
+                                shapes of the buildings) for any given country or region.
+                            </li>
+                            <li>
+                                <a href="https://ghsl.jrc.ec.europa.eu/download.php?ds=smod" target="_blank">GHS
+                                    Settlement Model Grid</a><br /> Publicly available data downloaded as GeoTIF
+                                to
+                                categorize buildings into <span class="tag urban">Urban</span> or <span
+                                    class="tag rural">Rural</span> categories.
+                                    <br/>
+                                    Schiavina, Marcello; Melchiorri, Michele; Pesaresi, Martino (2023): GHS-SMOD R2023A - GHS settlement layers, 
+                                    application of the Degree of Urbanisation methodology (stage I) to GHS-POP R2023A and GHS-BUILT-S R2023A,
+                                     multitemporal (1975-2030). European Commission, Joint Research Centre (JRC) 
+                                     [Dataset] doi: 10.2905/A0DF7A6F-49DE-46EA-9BDE-563437A6E2BA 
+                                     PID: <a href="http://data.europa.eu/89h/a0df7a6f-49de-46ea-9bde-563437a6e2ba ">http://data.europa.eu/89h/a0df7a6f-49de-46ea-9bde-563437a6e2ba</a>.
+                            </li>
+
+
+                            <li>
+                                <a href="https://www.openstreetmap.org" target="_blank">Open Street Map
+                                    (OSM)</a><br /> Publicly available data contain a catalogue of buildings
+                                with
+                                specific coordinates and polygons (i.e. shapes of the buildings). Data are downloaded as
+                                shapefiles (.shp) from <a href="https://www.geofabrik.de/"
+                                    target="_blank">geofabrik.de</a>.
+                            </li>
+
+                            <li>
+                                <a href="https://overturemaps.org/" target="_blank">Overture Maps</a><br /> Publicly available 
+                                data contain a catalogue of buildings with specific coordinates and polygons (i.e. shapes of the buildings).
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="resources">
+                        <span class="pin-order">6</span>
+                        <h5>References</h5>
+                        <p><a href="https://arxiv.org/abs/1608.06993" target="_blank">Densely Connected Convolutional
+                                Networks</a> by Huang, Liu, van der Maaten, Q. Weinberger, 2018.</p>
+                        <p><a href="https://arxiv.org/abs/1512.03385" target="_blank">Deep Residual Learning for Image
+                                Recognition</a> by He, Zhang, Ren, Sun, 2015.</p>
+                        <p><a href="https://data.europa.eu/doi/10.2785/706535" target="_blank">European Commission: Eurostat, 
+                            Applying the degree of urbanisation – A methodological manual to define cities, towns and 
+                            rural areas for international comparisons – 2021 edition</a>, Publications Office of the 
+                            European Union, 2021.</p>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="license">
+                        <span class="pin-order">7</span>
+                        <h5>License</h5>
+                        <p>Open Building Insights data is shared under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Data Commons Open Database License (ODbL) v1.0</a> license.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="side-table-of-content mt100" id="nav-sticky">
+                    <ul>
+                        <li>
+                            <h3 class="mb10">Outline</h3>
+                        </li>
+                        <li><a href="#training">Model Training Approach</a></li>
+                        <li><a href="#model-architecture">Building Classification</a></li>
+                        <li><a href="#base-model">Model Architecture</a></li>
+                        <li><a href="#model-training">Training the Model</a></li>
+                        <li><a href="#data-sources">Data Sources</a></li>
+                        <li><a href="#resources">References</a></li>
+                        <li><a href="#license">License</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script
+    src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+<!--Sidebar scripts-->
+<script src="resources/js/sidebar.js"></script>
+</html>
+
+<script>
+    $(document).ready(function () {
+        //    console.log(window.location.href.includes('methodology'));
+        // $('.collapse').collapse()
+    });
+
+
+    // SCROLL
+    window.onscroll = function () { soSticky() };
+    var navbar = document.getElementById("nav-sticky");
+    var s1 = document.getElementById("banner");
+    var sticky = navbar.offsetTop;
+
+    function soSticky() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>

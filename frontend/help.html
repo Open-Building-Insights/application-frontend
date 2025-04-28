@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - SEforALL </title>
+    <link rel="stylesheet" href="resources/css/help.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!--fancy alert-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="resources/css/help.css">
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+    <link rel="stylesheet" href="resources/css/auxiliary.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+    
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <div class="toggle-container" style="display: none;">
+                <div class="vertical-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mapSwitch">
+                        <span class="slider"></span>
+                        <div class="labels">
+                            <span class="label-top">OBI</span>
+                            <span class="label-bottom">MUG</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+
+           <div class="nav-footer">
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+
+    <div class="top-banner">
+        <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+                class="link-inline-white">We'd love to hear about
+                it!</a>
+        </p>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-banner">
+                    <h1>Help and Support</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p class="page-description">
+                                At Open Building Insights we are committed to providing you with the best 
+                                possible experience and results. We understand the importance of 
+                                continuous improvement, and our team is dedicated to enhancing the model, 
+                                refining the data, and optimizing the output on an ongoing basis. 
+                            </p>
+                            <p>
+                                Your feedback is invaluable to us, and we welcome any suggestions or concerns you may have. Whether you have 
+                                questions about using the interface, encounter technical issues, or wish to collaborate on further improvements, our 
+                                support team is here to assist you every step of the way. Together, let's work towards achieving even greater 
+                                success!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-content">
+                    <section class="mb40 mt40">
+                        <h5 class="mb30">Contact Us</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="content-box bg-base-green dflex pad20 gap1">
+                                    <div><img src="resources/images/icon-mail.png" style="width: 50px;" /> </div>
+                                    <div>
+                                        <p class="super">Email</p>
+                                        <h6>
+                                            uiep@seforall.org</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="select-section">
+                        <button id="our-team-button" class="active" onclick="selectTab(this)">
+                            Our Team
+                        </button>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <button id="change-log-button" onclick="selectTab(this)">
+                            Change Log
+                        </button>
+                    </div>
+                    <hr>  
+                    <section id="team-section">
+                        <div class="custom-tab">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#core" type="button" role="tab" aria-controls="home"
+                                        aria-selected="true">Core Team</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#extended" type="button" role="tab" aria-controls="profile"
+                                        aria-selected="false">Extended Team</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane show active" id="core" role="tabpanel" aria-labelledby="core-tab">
+                                    <div class="row ">
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Nishant <br /> Narayan
+                                                    </p>
+                                                    <p class="position">Programme Manager, Integrated Energy Access Planning</p>
+                                                    <p class="contact">Nishant.Narayan@seforall.org</p>
+                                                    <p class="company">SEforALL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Alexandros <br />Korkovelos
+                                                    </p>
+                                                    <p class="position">Senior Officer, Energy Planning</p>
+                                                    <p class="contact">alexandros.korkovelos@seforall.org</p>
+                                                    <p class="company">SEforALL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Elizabeth <br />Wangeci Chege
+                                                    </p>
+                                                    <p class="position"> Energy Efficiency and Cooling Specialist
+                                                    </p>
+                                                    <p class="contact">elizabeth.chege@seforall.org</p>
+                                                    <p class="company">SEforALL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Cristina <br /> Dominguez
+                                                    </p>
+                                                    <p class="contact">cristina.dominguezher@gmail.com</p>
+                                                    <p class="company">Former SEforALL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row ">
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Mattia <br />Marconcini 
+                                                    </p>
+                                                    <p class="position"> Data Scientist and Project Manager</p>
+                                                    <p class="company">German Aerospace Center (DLR)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Stephen <br />J. Lee
+                                                    </p>
+                                                    <p class="position">Data Scientist</p>
+                                                    <p class="contact">stephen@energyforgrowth.org</p>
+                                                    <p class="company">Open Energy Maps</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Trayana <br />Damyanova
+                                                    </p>
+                                                    <p class="position">Project Manager</p>
+                                                    <p class="cycle">First & Second Year Implementation</p>
+                                                    <p class="company">IBM, Poland</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Andras <br />Varga
+                                                    </p>
+                                                    <p class="position">Data Architect</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row ">
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Vasyl <br />Chepara
+                                                    </p>
+                                                    <p class="position">Data Scientist</p>
+                                                    <p class="cycle">First & Second Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Marlieke <br />Kerremans
+                                                    </p>
+                                                    <p class="position">Product Manager</p>
+                                                    <p class="cycle">First & Second Year Implementation</p>
+                                                    <p class="company">IBM, Netherlands</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="extended" role="tabpanel" aria-labelledby="extended-tab">
+                                    <div class="row ">
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Christine <br /> Arnold
+                                                    </p>
+                                                    <p class="position">Research Assistant</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Germany</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Premjit <br />Balasundaram
+                                                    </p>
+                                                    <p class="position">Senior Delivery Project Executive</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, India</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Artem <br /> Buts
+                                                    </p>
+                                                    <p class="position"> Junior GenAI Data Scientist</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Diana <br /> Calde
+                                                    </p>
+                                                    <p class="position"> Climate Scientist, Geospatial Developer</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Phillipines</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Matej <br /> Cech
+                                                    </p>
+                                                    <p class="position">Front-end, Cloud Developer IBMCloud Jr.</p>
+                                                    <p class="cycle">First & Second Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Geeth <br />Devara
+                                                    </p>
+                                                    <p class="position"> Student Support</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, India</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Pavol <br />Jesensky
+                                                    </p>
+                                                    <p class="position">Cloud Architect</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Robert <br /> Jostiak
+                                                    </p>
+                                                    <p class="position"> Cloud Developer IBMCloud Jr.</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Vladimir <br /> Kacur
+                                                    </p>
+                                                    <p class="position"> Cloud Developer IBMCloud Sr.</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Katherine <br />Kinlocke
+                                                    </p>
+                                                    <p class="position"> Business Analyst</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, United Kingdom</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Hendrik <br />Loffel
+                                                    </p>
+                                                    <p class="position"> Data Scientist & Automation Expert</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Germany</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Shobha <br /> Mani
+                                                    </p>
+                                                    <p class="position"> Sustainability Accelerator Lead</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, India</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Yukti <br /> Makkar
+                                                    </p>
+                                                    <p class="position"> Project Manager</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, India</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Stefan <br />Masnik
+                                                    </p>
+                                                    <p class="position">Junior GenAI Data Scientist</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Jordynn <br />McKnight
+                                                    </p>
+                                                    <p class="position"> UX Designer, UX Research</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, Netherlands</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Yana <br /> Prosvirova
+                                                    </p>
+                                                    <p class="position">CSR Support</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Austria</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Tim-Noah
+                                                        <br /> Schmidt
+                                                    </p>
+                                                    <p class="position">Data Architect/Engineer</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Germany</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Raphael
+                                                        <br /> Sgier
+                                                    </p>
+                                                    <p class="position">Data Scientist</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Switzerland</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Chhitij
+                                                        <br /> Singh
+                                                    </p>
+                                                    <p class="position">Data Scientist</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, India</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Ryan
+                                                        <br /> Soliveres
+                                                    </p>
+                                                    <p class="position">User Interface Developer</p>
+                                                    <p class="cycle">Second Year Implementation</p>
+                                                    <p class="company">IBM, Phillipines</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Milos
+                                                        <br /> Sykora
+                                                    </p>
+                                                    <p class="position">DWH Data Leader</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Renata
+                                                        <br /> Ujhaziova
+                                                    </p>
+                                                    <p class="position">DL/Computer Vision Expert</p>
+                                                    <p class="cycle">First Year Implementation</p>
+                                                    <p class="company">IBM, Slovakia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Matheus
+                                                        <br /> Abreu
+                                                    </p>
+                                                    <p class="position">Front-end, Cloud Developer IBMCloud</p>
+                                                    <p class="cycle">Third Year Implementation</p>
+                                                    <p class="company">IBM, Brazil</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Grace <br />Wambui Kamau</p>
+                                                    <p class="position">Programme Assistant, Sustainable Cooling</p>
+                                                    <p class="contact">grace.kamau@seforall.org</p>
+                                                    <p class="company">SEforALL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="content-box-avatar ">
+                                                <div class="img_placeholder"></div>
+                                                <div class="details">
+                                                    <p class="name">Juliam <br/>Cantor
+                                                    </p>
+                                                    <p class="position">Energy Planning Analyst</p>
+                                                    <p class="contact">julian.cantor@seforall.org</p>
+                                                    <p class="company">SEforALL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                    <section id="change-log-section">
+                        <div class="custom-tab">
+                            <ul class="nav nav-tabs" id="log-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#mar25-log" type="button" role="tab" aria-controls="home"
+                                        aria-selected="true">March 2025</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#feb25-log" type="button" role="tab" aria-controls="home"
+                                        aria-selected="true">February 2025</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jan25-log" type="button" role="tab" aria-controls="profile"
+                                        aria-selected="false">January 2025</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#dec24-log" type="button" role="tab" aria-controls="profile"
+                                        aria-selected="false">December 2024</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabLog">
+                                <div class="tab-pane show active" id="mar25-log" role="tabpanel" aria-labelledby="current-tab">
+                                    <div class="log-content">
+                                        <div class="log-header">
+                                            <p class="title">
+                                                March 2025
+                                            </p>
+                                            <p class="date">
+                                                March 28th, 2025
+                                            </p>
+                                        </div>
+                                        <div class="log-body">
+                                            <strong><p class="description">New feature</p></strong>
+                                            <ul class="list">
+                                                <li>Urban growth forecasted for years 2025->28 for Nairobi and the following cities in India: Greater Mumbai area, Ahmadabad, Bangalore, Bhopal, Chennai, Jaipur and Kolkata</li>
+                                            </ul>
+                                            <strong><p class="description">Platform changes</p></strong>
+                                            <ul class="list">
+                                                <li>Fixing spacing errors in some building categories</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="log-content">
+                                        <div class="log-header">
+                                            <p class="title">
+                                                March 2025
+                                            </p>
+                                            <p class="date">
+                                                March 12th, 2025
+                                            </p>
+                                        </div>
+                                        <div class="log-body">
+                                            <strong><p class="description">Data changes</p></strong>
+                                            <ul class="list">
+                                                <li>Update the list of geoparquet files available for download on the share page</li>
+                                            </ul>
+                                            <strong><p class="description">Platform changes</p></strong>
+                                            <ul class="list">
+                                                <li>Handling multiple polygons when using the <i>Upload Shapefile</i></li>
+                                                <li>Redesigning the sidebar so that the menu options remain in the same place when the sidebar is expanded</li>
+                                                <li>Fixing a bug around incorrectly caching shapefiles using the <i>Upload Shapefile</i> option</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="feb25-log" role="tabpanel" aria-labelledby="previus-tab">
+                                    <div class="log-content">
+                                        <div class="log-header">
+                                            <p class="title">
+                                                February 2025
+                                            </p>
+                                            <p class="date">
+                                                February 13th, 2025
+                                            </p>
+                                        </div>
+                                        <div class="log-body">
+                                            <strong><p class="description">Data changes</p></strong>
+                                            <ul class="list">
+                                                <li>Change of the source for building heights to Open Buildings 2.5D Temporal Dataset to facilitate worldwide coverage</li>
+                                            </ul>
+                                            <strong><p class="description">Platform changes</p></strong>
+                                            <ul class="list">
+                                                <li>Introducing Changelog to track platform and data related changes</li>
+                                                <li>Revising the flow of the custom polygon creation on the map page</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="jan25-log" role="tabpanel" aria-labelledby="previus-tab">
+                                    <div class="log-content">
+                                        <div class="log-header">
+                                            <p class="title">
+                                                January 2025
+                                            </p>
+                                            <p class="date">
+                                                January 30th, 2025
+                                            </p>
+                                        </div>
+                                        <div class="log-body">
+                                            <strong><p class="description">Platform changes</p></strong>
+                                            <ul class="list">
+                                                <li>Renaming APIs to seforall from an incorrect naming</li>
+                                                <li>Fixing a problem with large districts not loading in Chrome</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="log-content">
+                                        <div class="log-header">
+                                            <p class="title">
+                                                January 2025
+                                            </p>
+                                            <p class="date">
+                                                January 16th, 2025
+                                            </p>
+                                        </div>
+                                        <div class="log-body">
+                                            <strong><p class="description">Data changes</p></strong>
+                                            <ul class="list">
+                                                <li>Introducing seven new states in India: Assam, Jharkhand, Nagaland, Mizoram, Tamil Nadu, Kerala and Madhya Pradesh</li>
+                                                <li>Introducing a README file to OBI when downloading data</li>
+                                                <li>Explicitly stating licensing of data</li>
+                                            </ul>
+                                            <strong><p class="description">Platform changes</p></strong>
+                                            <ul class="list">
+                                                <li>Zipping downloadable data</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="dec24-log" role="tabpanel" aria-labelledby="previus-tab">
+                                    <div class="log-content">
+                                        <div class="log-header">
+                                            <p class="title">
+                                                December 2024
+                                            </p>
+                                            <p class="date">
+                                                December 18th, 2024
+                                            </p>
+                                        </div>
+                                        <div class="log-body">
+                                            <strong><p class="description">Platform changes</p></strong>
+                                            <ul class="list">
+                                                <li>Change in the "Draw an Area" behavior allowing to move the map to the correct location before starting to draw a polygon</li>
+                                                <li>Adding a customized loading screen for mobile devices</li>
+                                                <li>Introducing tabs in the building related popup window, shrinking their size by organizing data into categories</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script>
+        function selectTab(el) {
+            if (el.id == "change-log-button") {
+                $('#change-log-button').addClass('active');
+                $('#our-team-button').removeClass('active');
+                $('#change-log-section').fadeIn();
+                $('#team-section').fadeOut()
+            } else {
+                $('#our-team-button').addClass('active');
+                $('#change-log-button').removeClass('active');
+                $('#change-log-section').fadeOut();
+                $('#team-section').fadeIn();
+            }
+        }
+    </script>
+</body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script
+    src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+<!--Sidebar scripts-->
+<script src="resources/js/sidebar.js"></script>
+</html>

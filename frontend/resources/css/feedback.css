@@ -1,0 +1,33 @@
+@import url("styles.css");
+
+.control-wrapper {
+    background: var(--color-beige);
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.form-control {
+    color: var(--color-base-green);
+    background-color: var(--color-beige);
+}
+
+.control-wrapper .form-control {
+    border: none;
+    padding: 0px;
+}
+
+.control-wrapper .superscript {
+    margin-bottom: 0px;
+}
+
+.superscript {
+    color: #959595;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    font-size: 9px;
+    text-align: left;
+}
+
+textarea.form-control {
+    height: 300px;
+}

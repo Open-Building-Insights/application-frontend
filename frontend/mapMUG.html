@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - SEforALL </title>
+    <link rel="stylesheet" href="resources/css/mapMUG.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Shp-->
+    <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!--fancy alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <!--Leaflet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <div class="toggle-container" style="display: none;">
+                <div class="vertical-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mapSwitch">
+                        <span class="slider"></span>
+                        <div class="labels">
+                            <span class="label-top">OBI</span>
+                            <span class="label-bottom">MUG</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+
+            <div class="nav-footer">
+                <!-- <div class="nav-alert">
+                    <h5>We Value Your Input!</h5>
+                    <p>Help us improve our tool by quickly sharing your feedback on our features, site experience and
+                        usability.</p>
+                    <a href="feedback.html" class="link-cta">Share feedback</a>
+                </div> -->
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+   
+    <div class="page-wrapper">
+
+        <div class="top-banner">
+            <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a
+                    href="feedback.html" class="link-inline-white">We'd love to hear about
+                    it!</a>
+            </p>
+        </div>
+        <div id="map-container">
+            <div id="map"></div>
+            <button id="info-button" title="More Info">ℹ</button>
+
+            <!-- Pop-up -->
+            <div id="info-popup" class="hidden">
+                <h3>MODELING URBAN GROWTH (MUG)</h3>
+                <p>TMUG is an open-source Al model designed to predict where cities will grow. It helps users to map future urbanization and associated infrastructure needs. enabling decision makers to prioritize communities and developing regions that need support for issues like electrification and energy services. MUG is an Al Alliance project, and is publicly available and open-source on GitHub.
+                    The model is trained on, and validates, historical data from satellite images; geographic data, such as slope and elevation; demographic data; and structural data, such as road layout, combining the data into a time series.
+                    A The model is currently trained on data from Africa, including: Nigeria, Benin, Togo, Ghana, Cameroon, Uganda, Kenya, Democratic Republic of the Congo, Tanzania, Rwanda, and Malawi. However, the model is designed to be re- trained by users for any country in the world, using publicly accessible data. On GitHub, MUG includes an explanatory guidebook on running the code and making predictions using the same or different datasets, which further expands access to developers and decision-makers.                 
+                    Recognizing the potential of this work to provide even greater insights for city planning and development through the power of Al, IBM has extended its collaboration with Sustainable Energy for All through the IBM Sustainability Accelerator. The organizations will initially focus on continuing to expand the Open Building Insights online platform in India and will explore integrating the Modeling Urban Growth Al model into the platform.</p>
+                <button id="close-popup">Close</button>
+            </div>
+            <div class="urban-growth-slider">
+                <div class="mug-example-container">
+                    <div class="list-square">
+                        <div>
+                            <p class="mug-probabilites-title">Urban Growth <br>Probabilities</p>
+                        </div>
+                        <div>
+                            <div class="square hard"></div>
+                            <small>100%</small>
+                        </div>
+                        <div>
+                            <div class="square medium"></div>
+                            <small>~50%</small>
+                        </div>
+                        <div>
+                            <div class="square soft"></div>
+                            <small>&lt;20%</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-container">
+                    <div class="title-container">
+                        <h8>You're Viewing</h8>
+                        <h6>Urban Growth</h6>
+                        <h8>Drag the slider to see our city growth projection in the coming years or press play to watch.</h8>
+                    </div>
+                    <div class="slider-container">
+                        <div class="city-selector">
+                            <select id="city-select">
+                                <option value="ahmadabad">Ahmadabad</option>
+                                <option value="bangalore">Bangalore</option>
+                                <option value="bhopal">Bhopal</option>
+                                <option value="chennai">Chennai</option>
+                                <option value="greaterBombay">Greater Mumbai</option>
+                                <option value="jaipur">Jaipur</option>
+                                <option value="kolkata">Kolkata</option>
+                                <option value="nairobi">Nairobi</option>
+                            </select>
+                        </div>
+                        <button id="play-button">▶</button>
+                        <input type="range" id="urban-slider" min="2013" max="2015" value="2013" step="1" />
+                        <span id="year-display">2013</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- JSzip -->
+    <script src="resources/js/jszip.min.js"></script>
+
+    <script>
+        function readData(url) {
+            return new Promise(async resolve => {
+                let unzippedHeader = {};
+                let unzippedBody = {};
+                const zipfile = await fetch(url.replace(".json", ".zip"));
+                const reader = zipfile.body.getReader();
+                let total_bytes = zipfile.headers.get('Content-Length')
+                let received_total = 0
+                var fileContentArray = new Uint8Array(total_bytes);
+                const decoder = new TextDecoder("utf-8");
+                
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) {
+                        break;
+                    }
+                    for (let i = 0; i < value.length; i++) { 
+                        fileContentArray[received_total+i] = value[i];
+                    }
+                    received_total += value.length
+                    let percent = received_total / total_bytes;
+                }
+                fileContent = new Blob([fileContentArray]);
+                
+                var new_zip = new JSZip();
+                zip = await new_zip.loadAsync(fileContent)
+                const jsonFiles = [];
+            
+                const filterFiles = (file) => {
+                    if (file.includes('data_final_prob_masked_building.geojson') || file.includes('data_final_prob_masked_landtobuilding.geojson'))
+                        return true;
+                    return false;
+                }
+
+                const readJsonFiles = async (val) => {
+                    const uzBlob = await zip.files[val].async('blob');
+                    const uzReader = uzBlob.stream().getReader();
+                    let uzRead = 0;
+                    var jsonString = ""
+                    
+                    const year = val.split("/")[0];
+
+                    while (!(result = await uzReader.read()).done) {
+                        jsonString += decoder.decode(result.value, { stream: true });
+                    }
+
+                    if (!!jsonFiles[year]) { 
+                        jsonFiles[year].push(JSON.parse(jsonString))
+                    } else {
+                        jsonFiles[year] = [JSON.parse(jsonString)]
+                    }
+                }
+
+                const promiseList = []
+
+                Object.keys(zip.files)
+                    .filter(filterFiles.bind(this))
+                    .forEach(value => promiseList.push(readJsonFiles(value)));
+                
+                Promise.all(promiseList).finally(() => resolve(jsonFiles))
+            });
+        }
+
+        function createMapLayers(year) {
+            const maskedBuildingGeojson = geoJSONPairs[year].filter(x => x.name.includes("data_final_prob_masked_building"))[0];
+            const maskedLandToBuildingGeojson = geoJSONPairs[year].filter(x => x.name.includes("data_final_prob_masked_landtobuilding"))[0];
+
+
+            for (let i = 0; i < maskedBuildingGeojson.features.length; i++) {
+                currentLayers.push([
+                    L.geoJSON(maskedBuildingGeojson.features[i], { style: getStyleGeoJson(maskedBuildingGeojson.features[i]), onEachFeature: (feature, layer) => getEachPopUp(feature, layer) }).addTo(map),
+                    L.geoJSON(maskedLandToBuildingGeojson.features[i], { style: getStyleGeoJson(maskedLandToBuildingGeojson.features[i]), onEachFeature: (feature, layer) => getEachPopUp(feature, layer) }).addTo(map)
+                ]);
+            }
+        }
+
+        function cleanMapLayers() {
+            currentLayers.forEach(layer => { 
+                map.removeLayer(layer[0])
+                map.removeLayer(layer[1])
+            });
+        }
+
+        function setSliderYears(yearList) {
+            yearList.map(year => parseInt(year, 10))
+                    .sort()
+                    .forEach(x => years.push(x));
+            
+            urbanSlider.min = Math.min(...years);
+            urbanSlider.max = Math.max(...years);
+            urbanSlider.step = 1;
+            urbanSlider.value = years[0];
+            
+            firstYear = years[0];
+            yearDisplay.textContent = firstYear;
+        }
+
+        function startLoader() {
+            Swal.fire({
+                html: '<div><img src="resources/images/loading.gif" alt="Loading"/></div>',
+                title: 'We are processing your request....',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            });     
+        }
+
+        function stopLoader() {
+            Swal.close();
+        }
+        
+        //geoJSON Global Variable
+        var geoJSONPairs = {};
+        
+        const geoJSONStyle = {
+            stroke: false,
+            color: '#005500', // Color for borders
+            fillColor: '#005500', // Fill color
+            fillOpacity: 0.5, // Transparency for fill
+            weight: 1 // Thickness of the border
+        };
+
+        const citySelect = document.getElementById("city-select");
+        const savedCity = localStorage.getItem('selectedCity');
+        if (savedCity) {
+            citySelect.value = savedCity;
+        } else {
+            citySelect.value = 'nairobi';
+        }
+
+        const cityCoordinates = {
+            nairobi: [-1.286389, 36.817223],
+            greaterBombay: [19.076090, 72.877426],
+            ahmadabad: [23.033863, 72.585022],
+            bangalore: [12.971599, 77.594566],
+            bhopal: [23.259933, 77.412613],
+            chennai: [13.067439, 80.237617],
+            jaipur: [26.907524, 75.739639],
+            kolkata: [22.572645, 88.363892],
+        };
+        
+        let currentLayers = [];
+        let selectedCity = citySelect.value;
+        let coordinates = cityCoordinates[selectedCity];
+        
+        // Configure years list
+        var years = [];
+        var firstYear = 0;
+
+        // Configure the slider based on available years
+        const urbanSlider = document.getElementById('urban-slider');
+        
+        // Display the current year
+        const yearDisplay = document.getElementById('year-display');
+
+        const zipUrl = generateGeoZipUrl(citySelect.value);
+
+        startLoader();
+
+        readData(zipUrl)
+            .then(res => {
+                // Set geoJSON Global Variable
+                geoJSONPairs = res;
+
+                setSliderYears(Object.keys(res));
+
+                // Add new layers for the first year
+                createMapLayers(firstYear);
+
+                // Set map zoom out
+                map.setZoom(11);
+            })
+            .finally(() => stopLoader()); 
+
+        citySelect.addEventListener("change", async function () {
+            startLoader();
+            selectedCity = citySelect.value;
+            coordinates = cityCoordinates[selectedCity];
+            localStorage.setItem('selectedCity', selectedCity);
+            if (coordinates) {
+                map.setView(coordinates, 15); 
+            }
+            const zipUrl = generateGeoZipUrl(citySelect.value);
+
+            readData(zipUrl)
+                .then(res => {
+                    // Set geoJSON Global Variable
+                    geoJSONPairs = res;
+
+                    setSliderYears(Object.keys(res));
+                    
+                    // Add new layers for the first year
+                    createMapLayers(firstYear);
+
+                    // Set map zoom out
+                    map.setZoom(11);
+                })
+                .finally(() => stopLoader());
+        });
+
+        function generateGeoZipUrl(city) {
+            return `https://mug-forecast.s3.eu-de.cloud-object-storage.appdomain.cloud/${city}/years.zip`;
+        }
+
+        let map = L.map('map').setView(coordinates, 11);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "© OpenStreetMap contributors",
+        }).addTo(map);
+        
+        
+        
+        function resetYearToMin() {
+            const minYear =  urbanSlider.min; 
+            urbanSlider.value = minYear; 
+            yearDisplay.textContent = minYear; 
+        }
+
+        window.addEventListener('load', resetYearToMin);
+
+        function getStyleGeoJson(feature) {
+            if (!!feature) {
+                geoJSONStyle.fillOpacity = ((feature.properties.DN / 2) / 100);
+            }
+
+            return geoJSONStyle;
+        }
+
+        function getEachPopUp(feature, layer) {
+            layer.on('mouseover', function (e) {
+                var content = `<p>${feature.properties.DN}%</p>`;
+                showTemporaryPopup(e.latlng, content, feature);
+            });
+            layer.on('mouseout', function () {
+                removeTemporaryPopup();
+            });
+        }
+
+        var tempPopup;
+
+        function showTemporaryPopup(latlng, content, feature) {
+            removeTemporaryPopup();  // Remove any existing temporary popup
+            
+            var mapContainer = document.getElementById('map');
+            tempPopup = document.createElement('div');
+            tempPopup.className = 'custom-popup temporary-popup';
+            tempPopup.innerHTML = '<div class="popup-content">' +
+                '<div class="popup-body">' +
+                content +
+                '</div>' +
+                '</div>';
+
+            mapContainer.appendChild(tempPopup);
+
+            // Position the temporary popup with an offset
+            var point = map.latLngToContainerPoint(latlng);
+            var offset = { x: 15, y: 15 }; // Offset values
+            var left = point.x + offset.x;
+            var top = point.y + offset.y;
+
+            // Ensure the popup is within the visible map area and adjust position
+            var mapRect = mapContainer.getBoundingClientRect();
+            var popupRect = tempPopup.getBoundingClientRect();
+
+            // Adjust horizontal position
+            if (left + popupRect.width > mapRect.width) {
+                left = point.x - popupRect.width - offset.x;
+            }
+            if (left < 0) {
+                left = point.x + offset.x;
+            }
+
+            // Adjust vertical position
+            if (top + popupRect.height > mapRect.height) {
+                top = point.y - popupRect.height - offset.y;
+            }
+            if (top < 0) {
+                top = point.y + offset.y;
+            }
+
+            tempPopup.style.left = left + 'px';
+            tempPopup.style.top = top + 'px';
+        }
+
+        function removeTemporaryPopup() {
+            if (tempPopup) {
+                tempPopup.remove();
+                tempPopup = null;
+            }
+        }
+
+        // Handle slider input event
+        urbanSlider.addEventListener('input', () => {
+            const selectedYear = urbanSlider.value; // Get the selected year
+            yearDisplay.textContent = selectedYear;
+
+            // Remove currently displayed layers
+            cleanMapLayers();
+
+            // Add new layers for the selected year
+            createMapLayers(selectedYear);
+        });
+            
+        // Add play button functionality
+        const playButton = document.getElementById('play-button');
+        playButton.addEventListener('click', () => {
+            let currentYear = parseInt(urbanSlider.value);
+            const maxYear = parseInt(urbanSlider.max);
+
+            const playInterval = setInterval(() => {
+                if (currentYear >= maxYear) {
+                    clearInterval(playInterval);
+                } else {
+                    currentYear++;
+                    urbanSlider.value = currentYear;
+                    yearDisplay.textContent = currentYear;
+
+                    // Remove current layers
+                    cleanMapLayers();
+
+                    // Add new layers for the selected year
+                    createMapLayers(currentYear);
+                }
+            }, 500); // 500 ms between changes
+        });
+
+        // Finding elements
+        const infoButton = document.getElementById('info-button');
+        const infoPopup = document.getElementById('info-popup');
+        const closePopup = document.getElementById('close-popup');
+
+        // Opening the pop-up
+        infoButton.addEventListener('click', () => {
+            infoPopup.classList.remove('hidden'); // Showing the pop-up
+            infoPopup.style.display = 'block'; // Displaying the window
+        });
+
+        // Closing the pop-up
+        closePopup.addEventListener('click', () => {
+            infoPopup.classList.add('hidden'); // Hiding the pop-up
+            infoPopup.style.display = 'none'; // Removing from the screen
+        });
+
+        $('#mapSwitch').prop('checked', true);
+    </script>
+</body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script
+    src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!--Sidebar scripts-->
+<script src="resources/js/sidebar.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+</html>

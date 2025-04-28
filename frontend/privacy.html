@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> SEforALL </title>
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <!--fancy alert-->
+  <!-- Bootstrap CSS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+  <!-- Include Leaflet CSS file -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="resources/css/styles.css">
+
+  <link rel="stylesheet" href="resources/css/sidebar.css">
+  <link rel="stylesheet" href="resources/css/auxiliary.css">
+
+</head>
+
+<style>
+  ul.list-default {
+    margin-left: 17px;
+
+  }
+</style>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <img class="logo" src="resources/images/logo.png" />
+    </div>
+    <hr class="line">
+    <ul class="nav-list">
+        <li>
+            <a href="index.html">
+                <i class='bx bx-home'></i>
+                <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+        </li>
+        <li>
+            <a href="map.html">
+                <i class='bx bx-map-alt'></i>
+                <span class="links_name">Map</span>
+            </a>
+            <span class="tooltip">Map</span>
+        </li>
+        <div class="toggle-container" style="display: none;">
+          <div class="vertical-toggle">
+              <label class="toggle-switch">
+                  <input type="checkbox" id="mapSwitch">
+                  <span class="slider"></span>
+                  <div class="labels">
+                      <span class="label-top">OBI</span>
+                      <span class="label-bottom">MUG</span>
+                  </div>
+              </label>
+          </div>
+        </div>
+        <li>
+            <a href="about.html">
+                <i class='bx bx-info-circle'></i>
+                <span class="links_name">About</span>
+            </a>
+            <span class="tooltip">About</span>
+        </li>
+        <li>
+            <a href="glossary.html">
+                <i class='bx bx-align-middle'></i>
+                <span class="links_name">Glossary</span>
+            </a>
+            <span class="tooltip">Glossary</span>
+        </li>
+        <li>
+            <a href="methodology.html">
+                <i class='bx bx-shape-circle'></i>
+                <span class="links_name">Methodology</span>
+            </a>
+            <span class="tooltip">Methodology</span>
+        </li>
+
+       <div class="nav-footer">
+            <hr class="line">
+            <li>
+                <a href="share.html">
+                    <i class='bx bx-share-alt'></i>
+                    <span class="links_name">Share</span>
+                </a>
+                <span class="tooltip">Share</span>
+            </li>
+            <li>
+                <a href="feedback.html">
+                    <i class='bx bx-chat'></i>
+                    <span class="links_name">Give Feedback</span>
+                </a>
+                <span class="tooltip">Give Feedback</span>
+            </li>
+            <li>
+                <a href="help.html">
+                    <i class='bx bx-help-circle'></i>
+                    <span class="links_name">Help & Support</span>
+                </a>
+                <span class="tooltip">Help & Support</span>
+            </li>
+            <li>
+                <a href="" id="apiInfo">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">API</span>
+                </a>
+                <span class="tooltip">API</span>
+            </li>
+        </div>
+
+    </ul>
+  </div>
+
+
+
+  <div class="top-banner">
+    <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+        class="link-inline-white">We'd love to hear about
+        it!</a>
+    </p>
+  </div>
+
+  <div class=" page-wrapper">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="page-banner">
+          <h1>Privacy Considerations</h1>
+        </div>
+
+        <div class="page-content">
+          <div class="spacing-card">
+            <br />
+            <h5>Your privacy matters.</h5>
+            <p>As a global platform, Sustainable Energy for All (SEforALL) empowers leaders to broker partnerships and
+              unlock finance to achieve universal access to sustainable energy. We marshal evidence, benchmark progress
+              and connect stakeholders. We also amplify voices of our partners and tell stories of success.</p>
+            <p>Central to this mission is our commitment to be transparent about the data we collect about you, how it
+              is used, and with whom it is shared. This Privacy Policy applies when you use our services as described
+              below. By using the SEforALL website generally or by registering as a user of our services, you agree to
+              the use as set out in this Privacy Notice. We offer our users choices about the data we collect, use and
+              share as described in this Privacy Policy and Terms of Use.</p>
+            </p>
+
+
+            <div class="spacing-card">
+              <h5>How we use your data</h5>
+              <p>We are committed to protecting and respecting your privacy and will only use your personal information:
+              </p>
+              <ul class="list-default">
+                <li>to provide and improve our services to you</li>
+                <li>to compile anonymous statistics, for example, website usage statistics</li>
+                <li>to provide you with personalized content</li>
+                <li>to market our services including alerting you to events including the SEforALL Forum</li>
+                <li>to manage our relationship with you and other stakeholders</li>
+                <li>to process and respond to inquiries</li>
+                <li>to fulfil our legal obligations</li>
+                <li>for other legitimate business purposes</li>
+              </ul>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Purposes of data processing</h5>
+              <p>Processing concerns the following categories of data:</p>
+              <ul class="list-default">
+                <li>Surname, first name, date of birth, academic title, nationality, gender, event attendance and role,
+                  religion, marital status, children and other family members, place of birth, former surnames </li>
+                <li>Contact data (for example, telephone, email, address)</li>
+                <li>Photo identification (where provided)</li>
+                <li>Correspondence</li>
+                <li>Data on the establishment and administration of business relationships</li>
+                <li>Contact and newsletter forms</li>
+                <li>Events and webinar platforms</li>
+                <li>Data inputted via forms will be retained indefinitely and may be used for our email campaigns. If a
+                  specific message is sent along with a form it may be directed to the relevant party as required for
+                  follow up. At any point you may request to be removed from the database by using the unsubscribe link
+                  in the newsletter or sending an email to the address at the bottom of the newsletter.</li>
+              </ul>
+
+            </div>
+
+            <div class="spacing-card">
+              <h5>How and why we share your information</h5>
+              <p>Please note that we may on occasion be required to share your information with third parties who
+                provide
+                services to us or on our behalf. This includes:</p>
+              <ul class="list-default">
+                <li>where we outsource services, for example internet data collection</li>
+                <li>where we use photographs and videos from SEforALL events to publicize our work for example through
+                  hosting them on our website, in publications, brochures, websites, and in social media. This may
+                  include
+                  publicity in cooperation with third party organizations</li>
+                <li>to confirm or update information provided by you</li>
+                <li> to provide you with important information, inform you of events, or update you about our services
+                </li>
+              </ul>
+
+              <p>We have taken steps to ensure that all such entities keep your personal information confidential and
+                secure
+                and that the personal information is only used for specified purposes that we have informed you of.
+                We will only disclose information to other third parties once you have given your consent, or where we
+                are
+                required to do so by law.</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Confidentiality</h5>
+              <p>We acknowledge that the information you provide may be confidential. We will never sell or rent your
+                data.
+                Nor do we distribute or otherwise make personal information commercially available to any third party,
+                except with our service providers as disclosed in this Privacy Notice.</p>
+              <p>We will maintain the confidentiality of and protect your information in accordance with our Privacy
+                Notice
+                and applicable laws (EU Regulation 2016/679 - EU Data Protection Basic Regulation - Data Protection
+                Law).
+                Transmission of personal data</p>
+              <p>To the extent necessary for the aforementioned purposes, we will disclose your personal data to:</p>
+              <ul class="list-default">
+                <li>IT service providers used by us</li>
+                <li>administrative authorities, public corporations</li>
+                <li>other recipients designated by you</li>
+                <li>other recipients necessary for the fulfilment of instructions.</li>
+              </ul>
+              <p>Some of these recipients may be outside of Austria or may process the data outside of Austria. If the
+                level
+                of data protection in the other country does not correspond to the Austrian level of protection, we take
+                measures to ensure adequate protection.</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Your rights</h5>
+              <p>You have the right to apply for a copy of the information we hold about you by writing to us using the
+                contact details below. This is called a data subject access request. We may require further information
+                from
+                you to verify your identity before disclosing any personal information to you.</p>
+              <p>You also have the right to have any inaccurate information about you corrected. We want to make sure
+                that
+                your information is accurate and up to date and may check with you from time to time to verify it.</p>
+              <p>
+                You may ask us to correct or remove any information that you think is no longer up to date. Please
+                contact
+                us using the contact details below if you would like any corrections made to your information. In
+                addition,
+                you may request in writing using the contact details below, that identifiable photos of you be removed
+                from
+                public viewing and use.</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>If you do not want to receive information from us</h5>
+              <p>If you receive marketing materials from us, you may withdraw your consent for us to send these to you
+                at
+                any time and free of charge by using the contact details below.</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Cookies</h5>
+              <p>Cookies are files, used by most websites, that contain small amounts of data, which may include an
+                anonymous unique identifier. Cookies are sent to your browser from a website and stored on your
+                computer's
+                hard drive.</p>
+              <p>The SEforALL tool uses cookies to automatically collect information. You can instruct your browser to
+                refuse all cookies or to indicate when a cookie is being sent. The cookies collect information about the
+                user, such as Internet protocol (IP) addresses, navigation through the site, the software used and the
+                time
+                spent, along with other similar information. These will be anonymized so that the user is not
+                specifically
+                identified. The information will be stored and analyzed for internal website traffic analysis.</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Security</h5>
+              <p>The security of your personal information is important to us. We implement commercially acceptable
+                security
+                safeguards designed to protect your data, such as HTTPS. We regularly monitor our systems for possible
+                vulnerabilities and attacks. However, no method of transmission over the internet, or method of
+                electronic
+                storage, is 100% secure.</p>
+              <p>Please note that we assume no liability whatsoever for the disclosure of information due to errors in
+                data
+                transmission and/or unauthorized access by third parties not caused by us (e.g. hacking of email
+                accounts
+                or
+                telephone, interception of faxes).</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Changes to this notice</h5>
+              <p>This Privacy Policy is effective from 24 May 2018 and will remain in effect until updated.</p>
+              <p>We reserve the right to update or change our Privacy Policy at any time and you should check this
+                Privacy
+                Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either
+                through the email address you have provided us, or by placing a prominent notice on our website.</p>
+              <p>Your continued use of the Service after we post any modifications to the Privacy Policy on this page
+                will
+                constitute your acknowledgment of the modifications and your consent to abide and be bound by the
+                modified
+                Privacy Policy.</p>
+            </div>
+
+            <div class="spacing-card">
+              <h5>Contact Information</h5>
+              <p>If you have any questions in relation to this Privacy Notice, or if you would like to contact us to
+                exercise your rights as stated in this Privacy Notice, please contact us at <a
+                  href="mailto:info@seforall.org">info@seforall.org</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function readMore() {
+        var dots = document.getElementById("card-elipsis");
+        var moreText = document.getElementById("card-show-more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read more";
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read less";
+          moreText.style.display = "inline";
+        }
+      }
+
+
+      $(".btn-read-more").on("click", function (e) {
+        var targetDivParentd = e.target.closest(".content-box").id;
+        console.log(targetDivParentd)
+        if ($("#" + targetDivParentd).attr("aria-expanded") == "true") {
+          $("#" + targetDivParentd).removeClass("active");
+          $("#" + targetDivParentd).attr("aria-expanded", "false");
+        } else {
+          $("#" + targetDivParentd).addClass("active");
+          $("#" + targetDivParentd).attr("aria-expanded", "true");
+        }
+      });
+
+
+    </script>
+</body>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script
+  src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+<!--Sidebar scripts-->
+<script src="resources/js/sidebar.js"></script>
+</html>

@@ -1,0 +1,554 @@
+@import url("styles.css");
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    height: 100% !important
+}
+
+#map {
+    z-index: 0;
+    height: 100%;
+    width: calc(100% - 75px);
+    position: relative;
+    left: 37px;
+}
+
+#map-container {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dropdownMenuButton:focus,
+#skipBtn:focus,
+#bckBtn:focus,
+#bckBtn2:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#countryDropdown a:hover,
+#stateDropdown a:hover {
+    background-color: #183F37;
+    color: #FFF9F0 !important;
+}
+
+.dropdown-toggle .selected-img {
+    max-width: 30px;
+    /* Adjust the max-width as needed */
+    max-height: 30px;
+    /* Adjust the max-height as needed */
+    margin-right: 10px;
+    /* Optional spacing between image and text */
+}
+
+.dropdown-item img {
+    max-width: 30px;
+    /* Adjust the max-width as needed */
+    max-height: 30px;
+    /* Adjust the max-height as needed */
+    margin-right: 10px;
+    /* Optional spacing between image and text */
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    /* Adjust padding as needed */
+    font-size: 17px;
+    /* Adjust font size as needed */
+}
+
+/* Optional: Hover effect to highlight items on mouse hover */
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    /* Change the background color on hover */
+}
+
+#submitButton {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    z-index: 400;
+    background-color: #9BBE1D;
+    height: 42px;
+    width: 180px;
+    font-family: 'Barlow Condensed', sans-serif;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #183F37;
+}
+
+/* Basic styling for boxes, customize as needed */
+.option-boxes .box {
+    cursor: pointer;
+    text-align: center;
+    width: 227px;
+    height: 387px;
+    background-color: #FFF9F0;
+    border: 2px solid #FFF9F0;
+    border-radius: 3px;
+    rotation: 90deg;
+}
+
+.option-boxes .box:hover {
+    border: 2px solid #9BBE1D;
+}
+
+.option-boxes .box h5 {
+    color: #183F37;
+    font-family: 'Barlow Condensed', sans-serif;
+    padding-top: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    margin: auto;
+}
+
+.option-boxes .box p {
+    font-size: 12px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    color: #183F37;
+}
+
+.option-boxes img {
+    width: 227px;
+    height: 228px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.option-boxes .box.disabled {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.option-boxes p {
+    margin-top: 5px;
+}
+
+.option-boxes-dialog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Basic styling for boxes, customize as needed */
+.option-boxes-dialog .box {
+    position: relative;
+    border: 1.5px solid #30544C;
+    cursor: pointer;
+    text-align: center;
+    width: 147px;
+    border-radius: 3px;
+    background-color: #30544C;
+}
+
+.option-boxes-dialog .box h5 {
+    color: #FFF9F0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 23px;
+    margin: 0;
+}
+
+.option-boxes-dialog .box p {
+    color: #FFF9F0;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    padding: 5px 5px 10px;
+}
+
+.option-boxes-dialog img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.dropdown-toggle::after {
+    right: 5px;
+    top: 15px;
+    position: absolute;
+}
+
+#sidePanel {
+    overflow-y: scroll;
+    font-size: 12px;
+    color: #1d1b31;
+    position: absolute;
+    top: 0;
+    left: 75px;
+    height: 100%;
+    width: 282px;
+    background-color: #f2f2f2;
+    /* Example background color */
+    border-right: 1px solid #999;
+    z-index: 400;
+}
+
+.sidebar {
+    padding: 0px;
+}
+
+.sidebar li.divider {
+    border-top: 2px solid #2c3338;
+}
+
+
+.sidebar .logo-details {
+
+    padding: 6px 14px;
+}
+
+.sidebar .logo-details #btn {
+    width: 100%;
+    /* padding: 6px 14px; */
+}
+
+.sidebar.open .logo-details #btn {
+
+    right: 14px;
+    padding: 0px;
+}
+
+.page-wrapper {
+    transition: all 0.5s ease;
+}
+
+.page-wrapper.active {
+    margin-left: 164px;
+}
+
+.side-table-of-content ul li {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 3px 0px;
+}
+
+.side-table-of-content ul li a {
+
+    text-decoration: none;
+    color: #000;
+}
+
+.building-details {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    z-index: 400;
+}
+
+.headerTable {
+    width: 420px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #D4D4D4;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+table {
+    width: 420px;
+    height: auto;
+    background-color: #FFF9F0;
+    border: none;
+}
+
+tbody {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+th {
+    text-align: left;
+    color: #506561;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+td {
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    text-align: left;
+    color: #183F37;
+}
+
+tr {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    height: auto;
+    padding: 10px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.mini-placeholder {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    /* Adjust as needed */
+    font-size: smaller;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.form-control {
+    padding-top: 20px;
+    /* Add padding to prevent overlapping with the label */
+    background-color: #F8F3E9;
+    height: 41px !important;
+}
+
+#sidePanel h6 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 19px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #183F37;
+}
+.leaflet-top {
+    top: 30px !important;
+}
+
+.urban-growth-slider {
+    display: flex;
+    flex-direction: row; 
+    background: #f5f5eb;
+    padding: 8px 24px;
+    border-radius: 1px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    z-index: 1;
+    position: absolute; /* Absolute position relative to #map-container */
+    bottom: 1px; /* Margin from the bottom edge */
+    left: 50%; /* Centering horizontally */
+    width: 100%;
+    transform: translateX(-50%); /* Aligning the center */
+    gap: 10px; 
+}
+
+.title-container {
+    position: relative; 
+    text-align: center;
+    margin-bottom: 10px; 
+}
+
+.city-selector, .slider-container {
+    position: relative; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.city-selector {
+    display: inline-flex; 
+    align-items: center; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.city-selector label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.city-selector select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.slider-container {
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#urban-slider {
+    width: 70%;
+    background-color: #404040;
+    border-radius: 5px;
+}
+
+#play-button {
+    background-color: #2b4a22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#year-display {
+    font-size: 1.5em;
+    color: #a5b348;
+}
+/* Styles for the button */
+#info-button {
+    position: absolute;
+    top: 115px; /* Margin from the top edge */
+    right: calc(100% - 122px); /* Margin from the left edge */
+    background-color: #fff; /* White background */
+    border: 2px solid #ccc; /* Gray border */
+    border-radius: 50%; /* Circular shape */
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #333; /* Dark text */
+    text-align: center;
+    line-height: 36px; /* Aligning the text */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Above other elements */
+}
+
+/* Styles for the pop-up */
+#info-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 60%;
+    padding: 20px;
+    background-color: #f5f5eb; /* White background */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    z-index: 2000; /* Above other elements */
+    display: none; /* Hidden by default */
+    text-align: center;
+}
+
+/* Close button for the pop-up */
+#close-popup {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #183F37;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hidden pop-up */
+.hidden {
+    display: none;
+}
+
+.leaflet-geojson-green {
+    stroke: #005500; /* Green border */
+    fill: #005500; /* Dark green fill */
+    fill-opacity: 0.5; /* Transparency */
+    stroke-width: 1; /* Line thickness */
+}
+
+.custom-popup {
+    position: absolute;
+    pointer-events: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 45px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.popup-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 4.5px;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mug-example-container {
+    width: 20%;
+    height: auto;
+}
+
+.square {
+    height: 20px;
+    width: 20px;
+    margin-bottom: 10px;
+    clear: both;
+    background-color: #005500;
+    white-space: nowrap;
+  }
+  
+.medium {
+    opacity: 0.25;
+}
+
+.soft {
+    opacity	: 0.12;
+}
+
+.hard {
+    opacity: 0.5;
+}
+
+.list-square > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.list-square > div > small {
+    color: #183F37;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.list-square {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mug-probabilites-title {
+    margin-bottom: 5px;
+    font-size: 8px;
+    color: #101F1C;
+}

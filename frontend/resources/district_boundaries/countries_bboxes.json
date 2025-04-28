@@ -1,0 +1,67 @@
+{
+  "countries": [
+	{
+      "name": "Jharkhand",
+	  "minlat": "21.97",
+	  "maxlat": "25.34",
+	  "minlong": "83.32",
+	  "maxlong": "87.98"
+    },
+	{
+      "name": "Assam",
+	  "minlat": "24.10",
+	  "maxlat": "27.98",
+	  "minlong": "89.69",
+	  "maxlong": "96.02"
+    },
+	{
+      "name": "Kenya",
+	  "minlat": "-4.69",
+	  "maxlat": "5.02",
+	  "minlong": "33.91",
+	  "maxlong": "41.90"
+    },
+	{
+      "name": "Tamil_Nadu",
+	  "minlat": "8.07",
+	  "maxlat": "13.60",
+	  "minlong": "76.18",
+	  "maxlong": "80.38"
+    },
+	{
+      "name": "Nagaland",
+	  "minlat": "25.18",
+	  "maxlat": "27.04",
+	  "minlong": "93.29",
+	  "maxlong": "95.25"
+    },
+	{
+      "name": "Mizoram",
+	  "minlat": "21.88",
+	  "maxlat": "24.52",
+	  "minlong": "92.25",
+	  "maxlong": "93.45"
+    },
+	{
+      "name": "Maharashtra",
+	  "minlat": "15.60",
+	  "maxlat": "22.03",
+	  "minlong": "72.65",
+	  "maxlong": "80.90"
+    },
+	{
+      "name": "Madhya_Pradesh",
+	  "minlat": "21.07",
+	  "maxlat": "26.93",
+	  "minlong": "74.03",
+	  "maxlong": "82.81"
+    },
+	{
+      "name": "Kerala",
+	  "minlat": "8.24",
+	  "maxlat": "12.80",
+	  "minlong": "74.86",
+	  "maxlong": "77.42"
+    }
+  ]
+}

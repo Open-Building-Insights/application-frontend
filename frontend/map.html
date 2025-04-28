@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - SEforALL </title>
+    <link rel="stylesheet" href="resources/css/map.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Shp-->
+    <!-- <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> -->
+    <script src="resources/js/shp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!--fancy alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <div class="toggle-container" style="display: none;">
+                <div class="vertical-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mapSwitch">
+                        <span class="slider"></span>
+                        <div class="labels">
+                            <span class="label-top">OBI</span>
+                            <span class="label-bottom">MUG</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+
+           <div class="nav-footer">
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+
+    <div class="container" id="areasTable" style="display: none">
+        <div class="row justify-content-center">
+
+            <h3 class="fw-bolder text-center">Last visited Areas</h3>
+            <table id="myTable"
+                class="table text-center border-dark justify-content-center table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th colspan="2" class="border-dark" style="background-color: #d1d1d1">Total</th>
+                        <th colspan="3" class="border-dark" style="background-color: #e4e4e4">Residential buildings</th>
+                        <th colspan="3" class="border-dark" style="background-color: #f2f2f2">Non-residential buildings
+                        </th>
+                        <th colspan="2"></th>
+                    </tr>
+                    <tr>
+                        <th>Coordinates</th>
+                        <th>CreatedAt</th>
+                        <th style="width: 15%; display: table-cell; vertical-align: middle">Area of selected geography
+                        </th>
+                        <th>Square area (km<sup>2</sup>)</th>
+                        <th>Average buildings height (m)</th>
+                        <th style="display: table-cell; vertical-align: middle">Count</th>
+                        <th>Total floor area (km<sup>2</sup>)</th>
+                        <th>Average confidence (%)</th>
+                        <th style="display: table-cell; vertical-align: middle">Count</th>
+                        <th>Total floor area (km<sup>2</sup>)</th>
+                        <th>Average confidence (%)</th>
+                        <th style="display: table-cell; vertical-align: middle">Download GeoJSON</th>
+                        <th style="display: table-cell; vertical-align: middle">Map</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page-wrapper">
+
+        <div class="top-banner">
+            <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a
+                    href="feedback.html" class="link-inline-white">We'd love to hear about
+                    it!</a>
+            </p>
+        </div>
+        <div class="container py-2" style="display: none">
+            <div class="d-flex justify-content-center flex-wrap">
+                <button type="button" class="btn btn-dark mx-2">Select an Area</button>
+                <button type="button" id="drawAreaBtn" class="btn btn-dark mx-2">Draw an Area</button>
+                <button type="button" class="btn btn-dark mx-2" id="upload-btn">Upload a .shp</button>
+                <form enctype="multipart/form-data" style="display:none;">
+                    <input name="shapefile" type="file" id="shapefile-input" accept=".shp,.shx,.dbf,.prj" multiple>
+                </form>
+                <button type="button" id="lastVisitedBtn" class="btn btn-dark mx-2">Last visited</button>
+            </div>
+        </div>
+        <div id="map-container">
+            <div class="gray-screen">
+                <p>Click on the map to move the map to the correct location and <br /> click on the polygon on the top left corner to draw a shape.</p>
+            </div>
+            <div class="map-image"></div>
+            <div id="map"></div>
+            <div id="sidePanel" class="side-panel" style="display: none;  background-color: #FFF9F0;">
+                <div style="background-color: #FFF9F0 ; padding: 20px; margin-top: 30px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 id="editableStat" contenteditable="false" style="overflow: hidden;
+                        text-overflow: ellipsis;">Edit This Name</h3>
+                        <i class='bx bxs-edit my-2' id="editIcon" style="font-size: 15px; cursor: pointer"></i>
+                    </div>
+                    <!--        <p>Square area(km²) <span-->
+                    <!--                data-title="Total area of the selected area on the map, measured in square kilometers."><i-->
+                    <!--                class='bx bx-info-circle'></i></span></p>-->
+                    <!--        <p id="squareArea"></p>-->
+                    <div style="padding: 5px;">
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Square area(km²)<i
+                                class='bx bx-info-circle'
+                                title='Total area of the selected area on the map, measured in square kilometers.'></i>
+                        </p>
+                        <p id="squareArea"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Average buildings
+                            height(m)<i class='bx bx-info-circle'
+                                title='We utilized WSF3DV3 data from DLR to determine building heights. Presented as a map with black-and-white scale layers, each pixel approximates ten meters, enabling extraction of median building heights based on individual footprints for visualization.'></i>
+                        </p>
+                        <p id="buildingsHeight" style=" border-bottom: 1px solid #9FABA2"></p>
+                    </div>
+                </div>
+                <div style="padding-bottom: 130px; padding-right: 20px;padding-left: 20px;background-color: #FFF9F0">
+                    <h6 style="display: block; margin-top: 10px"> <span class="rectangle"></span>RESIDENTIAL BUILDINGS
+                    </h6>
+                    <div style="background-color: #F8F3E9; padding: 5px; border-radius: 6px">
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Count<i
+                                class='bx bx-info-circle'
+                                title='Building count refers to the total number of individual structures or edifices within a designated area, providing insight into the density of development and potential energy consumption patterns.'></i>
+                        </p>
+                        <p id="resBuildings"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Total floor
+                            area(km²)<i class='bx bx-info-circle'
+                                title='Total floor area represents the cumulative size of all floors within buildings, measured in square kilometers. It serves as a key metric for assessing the spatial footprint of structures and estimating overall energy usage.'></i>
+                        </p>
+                        <p id="resBuildingsArea"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Average
+                            confidence<i class='bx bx-info-circle'
+                                title='Average confidence indicates the level of certainty or reliability associated with the data provided, typically expressed as a percentage. It reflects the accuracy and completeness of information gathered, guiding users in interpreting and utilizing the dataset effectively.'></i>
+                        </p>
+                        <p id="resBuildingsConfidence"></p>
+                    </div>
+                    <h6 style="display: block; margin-top: 25px"> <span class="rectangle"></span>NON-RESIDENTIAL
+                        BUILDINGS</h6>
+                    <div style="background-color: #F8F3E9; padding: 5px; border-radius: 6px">
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Count<i
+                                class='bx bx-info-circle'
+                                title='Building count refers to the total number of individual structures or edifices within a designated area, providing insight into the density of development and potential energy consumption patterns.'></i>
+                        </p>
+                        <p id="nonResBuildings"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Total floor
+                            area(km²)<i class='bx bx-info-circle'
+                                title='Total floor area represents the cumulative size of all floors within buildings, measured in square kilometers. It serves as a key metric for assessing the spatial footprint of structures and estimating overall energy usage.'></i>
+                        </p>
+                        <p id="nonResBuildingsArea"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Average
+                            confidence<i class='bx bx-info-circle'
+                                title='Average confidence indicates the level of certainty or reliability associated with the data provided, typically expressed as a percentage. It reflects the accuracy and completeness of information gathered, guiding users in interpreting and utilizing the dataset effectively.'></i>
+                        </p>
+                        <p id="nonResBuildingsConfidence"></p>
+                    </div>
+                    <div style="background-color: #F8F3E9; padding: 5px; border-radius: 6px; margin-top: 15px;">
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Urban<i
+                                class='bx bx-info-circle'
+                                title='An urban area typically denotes a densely populated region characterized by high levels of infrastructure development, commercial activities, and residential complexes, often found in cities and towns.'></i>
+                        </p>
+                        <p id="urban"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Suburban<i
+                                class='bx bx-info-circle'
+                                title='A suburban area lies on the outskirts of urban centers, offering a blend of residential neighborhoods and commercial zones. It provides a balance between urban amenities and the tranquility of rural living, often characterized by single-family homes and access to urban services.'></i>
+                        </p>
+                        <p id="suburban"></p>
+                        <p style="font-size: 12px;font-weight: 600;line-height: 16px;color: #506561">Rural<i
+                                class='bx bx-info-circle'
+                                title='A rural area refers to sparsely populated regions predominantly consisting of agricultural land, natural landscapes, and small villages, where traditional lifestyles and farming practices are prevalent.'></i>
+                        </p>
+                        <p id="rural"></p>
+                    </div>
+                </div>
+                <div id="panelButtons">
+                    <button class="btn btn-dark btn-sm my-2" type="button" id="downloadGeoJSONButton"
+                        style="width: 100%; background-color: #183F37; border-radius: 3px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; color: #FFF9F0">DOWNLOAD
+                        GEOJSON
+                    </button>
+                    <a href="#" download id="hiddenGeoJSONDownloadLink" style="display: none;">Download GeoJSON</a>
+                    <a href="#" download id="hiddenREADMEDownloadLink" style="display: none;">Download README</a>
+                    <button class="btn btn-sm" type="button" id="backButton"
+                        style="width: 100%; outline-color: #183F37;border: 1px solid #183F37;font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; color: #183F37 ">BACK
+                    </button>
+                </div>
+            </div>
+            <button id="submitButton" class="btn" style="display: none;"><img class="logo"
+                    style="margin-bottom:3px;transform: scale(1.5);height: 30px; width: 30px"
+                    src="resources/images/noun-checkmark.png" alt="logo" />
+                SUBMIT POLYGON
+            </button>
+            <div id="mapLegend" class="map-legend py-4 px-4">
+                <h6
+                    style="font-family: 'Barlow Condensed', sans-serif; color: #183F37; font-size: 18px;font-weight: 700;">
+                    LAYERS</h6>
+                <input type="checkbox" id="urbanSuburbanCheckbox">
+                <label for="urbanSuburbanCheckbox" class="font-weight-bold">
+                    <span class="legend-color" style="background: #BC5F5F;"></span>
+                    <span style="font-weight: 400">Urban</span>
+                    <span>/</span>
+                    <span class="legend-color" style="background: #DBAAAA;"></span>
+                    <span style="font-weight: 400">Suburban</span>
+                </label>
+                <br>
+                <input type="checkbox" id="internetCheckbox">
+                <label for="internetCheckbox" style="margin-bottom: 0">
+                    <span style="font-weight: 400">Internet Speed</span>
+                </label>
+                <div style="padding-left: 30px; display: none" id="netColors">
+                    <span class="legend-color" style="background: red;"></span>
+                    <span id="veryHighValue">Very high</span>
+                    <br>
+                    <span class="legend-color" style="background: orange;"></span>
+                    <span id="highValue">High</span>
+                    <br>
+                    <span class="legend-color" style="background: yellow;"></span>
+                    <span id="normalValue">Normal</span>
+                    <br>
+                    <span class="legend-color" style="background: green;"></span>
+                    <span id="slowValue">Slow</span>
+                    <div id="verySlow" style="display: none;">
+                        <span class="legend-color" style="background: blue;"></span>
+                        <span id="verySlowValue">Very Slow</span>
+                    </div>
+                </div>
+                <h6 id="legend"
+                    style="padding-top: 6px; display:none;margin-top:3px;font-family: 'Barlow Condensed', sans-serif; color: #183F37; font-size: 18px;font-weight: 700">
+                    LEGEND</h6>
+                <div id="resident" style="display: none">
+                    <span class="legend-color" style="background: #0000cd"></span>
+                    <span style="padding-left: 5px;">Residential</span>
+                </div>
+                <div id="nonResident" style="display: none;padding-top: 4px">
+                    <span class="legend-color" style="background: #800080"></span>
+                    <span style="padding-left: 5px;">Non - Residential</span>
+                </div>
+                <div id="inActive" style="display: none;padding-top: 4px">
+                    <span class="legend-color" style="background: #868589;"></span>
+                    <span style="padding-left: 5px;">Inactive</span>
+                </div>
+
+            </div>
+            <div id="buildingDetails" class="building-details" style="display: none">
+                <div class="headerTable">
+                    <h6>Building Details</h6>
+                    <p>Properties</p>
+                </div>
+                <div id="propertiesTable">
+                    <!-- The property elements will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Sidebar scripts-->
+    <script src="resources/js/sidebar.js"></script>
+</body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="resources/js/scripts.js"></script>
+<!-- Unzipping library-->
+<script src="resources/js/jszip.min.js"></script>
+<!-- JavaScript -->
+<script
+    src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.2.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+</html>

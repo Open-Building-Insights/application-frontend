@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - Survey </title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+    <link rel="stylesheet" href="resources/css/survey.css">
+    <link rel="stylesheet" href="resources/css/auxiliary.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+    
+           <div class="nav-footer">
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+    
+        </ul>
+    </div>
+
+
+    <div class="top-banner">
+        <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+                class="link-inline-white">We'd love to hear about
+                it!</a>
+        </p>
+    </div>
+    <div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="page-banner">
+                    <h1>Help Us Improve</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p class="page-description">Thank you for using the Open Building Insights tool!​</p>
+                            <p>This is achieved by combining Sentinel-2 satellite images with
+                                Google-Microsoft Open
+                                Buildings (VIDA) data, which contains a building footprint catalog for a given region
+                                without providing auxiliary information.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-content">
+                    <div class="row mb20">
+                        <div class="col-md-12 spacing-card">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row mb20">
+                                        <div class="col-md-6">
+                                            <div class="control-wrapper">
+                                                <p class="superscript">First Name</p>
+                                                <input type="text" id="txtFirstName" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="control-wrapper">
+                                                <p class="superscript">Last Name</p>
+                                                <input type="text" id="txtLastName" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-wrapper">
+                                        <p class="superscript">Email</p>
+                                        <input type="text" id="txtEmail" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="control-wrapper mb20">
+                                        <p class="superscript">Job Title</p>
+                                        <input type="text" id="txtJobTitle" class="form-control" />
+                                    </div>
+                                    <div class="control-wrapper">
+                                        <p class="superscript">Organization</p>
+                                        <input type="text" id="txtJobTitle" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="spacing-card">
+                        <div class="content-box pos-relative" id="glossary">
+                            <span class="pin-order">1</span>
+                            <h5>For which purpose are you using the tool?​</h5>
+                            <div class="row mb20">
+                                <div class="col-md-12">
+                                    <div id="cb">
+                                        <input type="checkbox" id="cbDownload" name="Download"
+                                            value="Downloading data to integrate it into other data processing or modelling tools ​">
+                                        <label for="cbDownload">Downloading data to integrate it into other data
+                                            processing
+                                            or modelling tools ​</label><br>
+
+                                        <input type="checkbox" id="cbBuilding" name="Building"
+                                            value="Browsing building insights in a specific or various area/s of interest">
+                                        <label for="cbBuilding">Browsing building insights in a specific or various
+                                            area/s
+                                            of
+                                            interest</label><br>
+
+                                        <input type="checkbox" id="cbAPI" name="API" value="Using the API to integrate the data into another
+                                    tool">
+                                        <label for="cbAPI">Using the API to integrate the data into another
+                                            tool</label><br>
+
+                                        <input type="checkbox" id="cbOther" name="Other" value="Other">
+                                        <label for="cbOther">Other</label><br>
+
+                                        <div class="control-wrapper">
+                                            <textarea id="feedbackMessage" resize="false" class="form-control"
+                                                placeholder="Please specify..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spacing-card">
+                        <div class="content-box pos-relative" id="training">
+                            <span class="pin-order">2</span>
+                            <h5 class="mb10">Are you using or intending to use the output data and/or AI model for
+                                energy modelling
+                                purposes?
+                            </h5>
+
+                            <p class="mute mb30">Energy access, energy efficiency, energy transition, cooling needs
+                                assessment, etc.</p>
+                            <input type="checkbox" id="cbNo" name="no" value="No">
+                            <label for="cbNo">No</label><br>
+
+                            <input type="checkbox" id="cbYes" name="yes" value="Yes">
+                            <label for="cbYes">Yes</label><br>
+                            <div class="control-wrapper">
+                                <textarea id="feedbackMessage" resize="false" class="form-control"
+                                    placeholder="Please specify..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative " id="new-title">
+                        <span class="pin-order">3</span>
+                        <h5>How easy is it to navigate Open buildings insight?</h5>
+                        <div class="dflex rb-w" id="rbwNavigation">
+                            <div>
+                                😩
+                                <p class="superscript">Very Difficult</p>
+                            </div>
+                            <div>🤔
+                                <p class="superscript">Difficult</p>
+                            </div>
+                            <div>😶
+                                <p class="superscript">Neutral</p>
+                            </div>
+                            <div>😊
+                                <p class="superscript">Easy</p>
+                            </div>
+                            <div>😆
+                                <p class="superscript">Very Easy</p>
+                            </div>
+                        </div>
+
+                        <div style="">
+                            <input type="radio" name="navigation" id="rbNavigationVD" value="Very Difficult" />
+                            <input type="radio" name="navigation" id="rbNavigationD" value="Difficult" />
+                            <input type="radio" name="navigation" id="rbNavigationN" value="Neutral" />
+                            <input type="radio" name="navigation" id="rbNavigationE" value="Easy" />
+                            <input type="radio" name="navigation" id="rbNavigationVE" value="Very Easy" />
+                        </div>
+                    </div>
+
+
+                    <div class="content-box spacing-card pos-relative" id="model-architecture">
+                        <span class="pin-order">4</span>
+                        <h5>Is there any functionality or feature you feel is missing or could be improved?</h5>
+                        <input type="checkbox" id="cbNo" name="no" value="No">
+                        <label for="cbNo">No, it’s sufficient as is</label><br>
+
+                        <input type="checkbox" id="cbYes" name="yes" value="Yes">
+                        <label for="cbYes">Yes</label><br>
+                        <div class="control-wrapper">
+                            <textarea id="feedbackMessage" resize="false" class="form-control"
+                                placeholder="Please specify..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="base-model">
+                        <span class="pin-order">5</span>
+                        <h5>What features or functionality do you find most valuable in the tool?</h5>
+                        <div class="control-wrapper">
+                            <textarea id="txtFeatures" resize="false" class="form-control"
+                                placeholder="Please specify..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="model-training">
+                        <span class="pin-order">6</span>
+                        <h5>What is your overall satisfaction when using this tool?​
+                        </h5>
+
+                        <div class="dflex rb-w" id="rbwSatisfaction">
+                            <div>
+                                😩
+                                <p class="superscript">Very Unsatisfied</p>
+                            </div>
+                            <div>🤔
+                                <p class="superscript">Unsatisfied</p>
+                            </div>
+                            <div>😶
+                                <p class="superscript">Neutral</p>
+                            </div>
+                            <div>😊
+                                <p class="superscript">Satisfied</p>
+                            </div>
+                            <div>😆
+                                <p class="superscript">Very Satisfied</p>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="checkbox" id="cbSubsrcibe" name="no" value="No">
+                    <label for="cbNo"><b>Stay in touch!</b> Please select if you would like to be informed on future
+                        enhancements of the
+                        tool?</label><br>
+
+                    <div class="align-right mt30">
+                        <button type="submit" class="btn submit-button" id="submitEvalButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script: Radio Button -->
+    <script>
+        $(".rb-w div").on("click", function (e) {
+            e.preventDefault();
+            var targetGroupId = e.target.closest(".rb-w").id;
+
+            if ($(this).hasClass("active")) {
+            }
+            else {
+                $("#" + targetGroupId + ' div').removeClass("active");
+                $(this).addClass("active");
+            }
+        });
+    </script>
+
+    <!-- Script: Side Navigation -->
+    <script>
+        // following are the code to change sidebar button(optional)
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                pageWrapper.classList.add("active");
+            } else {
+                pageWrapper.classList.remove("active");
+            }
+        }
+    </script>
+</body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<!-- Core theme JS-->
+<script src="resources/js/scripts.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+</html>

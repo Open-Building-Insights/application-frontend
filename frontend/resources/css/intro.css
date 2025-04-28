@@ -1,0 +1,245 @@
+/* Inherit import and classes from the root */
+@import url("styles.css");
+
+body {
+    margin: 0;
+    color: var(--color-lite-beige);
+}
+
+h6 {
+    font-size: 10px !important;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase !important;
+    color: var(--color-lite-beige) !important;
+}
+
+/* #region LINKS */
+
+a.link-primary {
+    align-content: center;
+    width: 125px;
+    height: 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #F7F6F2 !important;
+    border-radius: 3px;
+    background-color: var(--color-emerald-green);
+    padding: 0;
+}
+
+a.link-primary:hover {
+    color: #F7F6F2 !important;
+    background: var(--color-emerald-green-var1);
+}
+
+a.link-outline {
+    height: 40px;
+    width: 125px;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    color: #E7E8DE;
+    border: 1.5px solid var(--color-emerald-green);
+    border-radius: 3px;
+}
+
+a.link-outline:hover {
+    color: #fff;
+    background-color: var(--color-emerald-green);
+
+}
+
+/* #endregion LINKS */
+
+/* #region CONTAINER */
+
+.container {
+    position: relative;
+    /* This makes the .logos absolute positioning relative to this container */
+    /* Set the dimensions or placement of the container as needed */
+}
+
+.image-container {
+    /* position: absolute; Old  value */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.map-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url('../images/background.png') no-repeat center center;
+    background-size: cover;
+    opacity: 90%;
+    z-index: 0;
+    /* Lower z-index */
+}
+
+.logo {
+    width: 71px;
+    height: 72px;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    filter: invert(100%) brightness(200%);
+}
+
+.logos {
+    justify-content: center;
+    display: ruby;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.logos div {
+    margin: 0px 20px;
+}
+
+.blurred-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.button-container {
+    display: flex;
+    gap: 1.5rem;
+    /* Create a box layout */
+    position: relative;
+    /* Positioned context */
+    z-index: 1;
+    /* Higher z-index */
+}
+
+.desktop-notice {
+    padding-top: 3%;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    color: #F7F6F2;
+    word-wrap: break-word;
+    line-height: 19px;
+}
+
+.footer {
+    padding: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.logo-group-container {
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0.5;
+}
+
+.line {
+    width: 100%;
+    height: 0.125rem;
+    position: absolute;
+    top: 0.4375rem;
+}
+
+.description-text {
+    padding: 4% 0;
+    position: relative;
+    color: #F7F6F2;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+    font-family: 'Mulish', sans-serif;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-container {
+    position: relative;
+    padding-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    position: relative;
+    color: var(--color-lite-beige);
+    font-size: 120px;
+    font-weight: 800;
+    line-height: 94px;
+    letter-spacing: -4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    width: 26%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* #endregion  CONTAINER */
+
+/* #region MISC */
+
+.accent-line {
+    width: 100%;
+    height: 2px;
+    background: var(--color-lite-beige);
+    opacity: 25%;
+}
+
+.accent-line.left {
+    margin: 0px 3% 0px 15%;
+}
+
+.accent-line.right {
+    margin: 0px 15% 0px 3%;
+}
+
+.accelerator-notice {
+    color: #F7F6F2;
+}
+/* #endregion MISC */
+
+.mobile-alert {
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcc00;
+    color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    z-index: 1000;
+  }
+  
+  .mobile-alert button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .mobile-alert button:hover {
+    background-color: #555;
+  }

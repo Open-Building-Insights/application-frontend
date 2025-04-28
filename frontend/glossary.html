@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - SEforALL </title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+    <link rel="stylesheet" href="resources/css/methodology.css">
+    <link rel="stylesheet" href="resources/css/auxiliary.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <div class="toggle-container" style="display: none;">
+                <div class="vertical-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mapSwitch">
+                        <span class="slider"></span>
+                        <div class="labels">
+                            <span class="label-top">OBI</span>
+                            <span class="label-bottom">MUG</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+
+           <div class="nav-footer">
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+
+
+    <div class="top-banner">
+        <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+                class="link-inline-white">We'd love to hear about
+                it!</a>
+        </p>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-banner">
+                    <h1>Glossary and Sources</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p class="page-description">Our objective is to produce high-quality building footprint
+                                data sets,
+                                namely
+                                a refined settlement data layer, by combining the result of several AI models with 
+                                open source data.</p>
+                            <p>This is achieved by combining Sentinel-2 satellite images with Google-Microsoft Open
+                                Buildings data 
+                                (<a href="https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description/"
+                                target="_blank">combined and published by VIDA</a>), 
+                                which contains a building footprint catalog for a given region without providing
+                                auxiliary information. For the full list of data sources see the dedicated section below.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-content">
+
+                    <div class="spacing-card">
+                        <div class="content-box pos-relative" id="glossary">
+                            <span class="pin-order">1</span>
+                            <h5>Glossary of Building Attributes Provided by OBI</h5>
+
+                            <ul class="card-list">
+                                <li>
+                                    <b> Building Type Source</b>
+                                    <p>Building type source refers to the reason based on which the classification type
+                                        of
+                                        the building is obtained.</p>
+
+                                    <ul class="custom-list-dash">
+                                        <li>
+                                            Buildings with less than 20 square meters of area are considered
+                                            Residential and their Building Type Source is "area"
+                                        </li>
+
+                                        <li>
+                                            Buildings which are associated with OSM buildings are classified based
+                                            on the available OSM information, in which case the source is "OSM
+                                            Derived"
+
+                                        </li>
+
+                                        <li>
+                                            For the rest of the buildings, their types are determined by the model,
+                                            in
+                                            which case Building Type Source refers to <span
+                                                class="text-technical">classification_model</span> and it
+                                            provides the confidence of the model with its choice.
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <b>Coordinates</b>
+                                    <p>Coordinates refers to the coordinates of the center of the building
+                                        provided as latitude and longitude.</p>
+                                </li>
+
+                                <li>
+                                    <b>Roof Area</b>
+                                    <p>Roof area refers to the area of the building when viewed from top given in square meters.</p>
+                                </li>
+
+                                <li>
+                                    <b>Building Faces</b>
+                                    <p>The number of outer walls (faces) of the building.</p>
+                                </li>
+
+                                <li>
+                                    <b>Perimeter</b>
+                                    <p>The perimeter of the building, i.e., the total length of the outer walls of the building given in meters.</p>
+                                </li>
+
+                                <li>
+                                    <b>Data Source</b>
+                                    <p>Data source is the source the building footprint was obtained from, valid values
+                                        are Google, Microsoft, and OSM.</p>
+                                </li>
+
+                                <li>
+                                    <b>GHS-SMOD</b>
+                                    <p>GHS-SMOD refers to degree of urbanization as defined and categorized by Global
+                                        Human
+                                        Settlement
+                                        Layer.</p>
+                                </li>
+
+                                <li>
+                                    <b>Height</b>
+                                    <p>The height of the building given in meters as well as in number of floors.</p>
+                                </li>
+
+                                <li>
+                                    <b>Gross Floor Area</b>
+                                    <p>Gross floor area is the total of footprint areas of each floor on the building.
+                                        Computed as
+                                        footprint area times the amount of floors for the building provided as square
+                                        meters.</p>
+                                </li>
+
+                                <li>
+                                    <b>Electricity Access*</b>
+                                    <p>The estimated mean likelihood that a building of interest is connected to the electric grid.</p>
+                                </li>
+
+                                <li>
+                                    <b>Electricity Consumption*</b>
+                                    <p>A mean-point estimate of a modeled distribution curve of monthly electricity consumption for a building, given in kWh.</p>
+                                    <p>* Currently only available in Kenya<br/>
+                                        We would like to acknowledge the <a href="https://www.openenergymaps.org/" target="_blank">Open Energy Maps</a> 
+                                        team (Dr. Stephen Lee from Massachusetts Institute of Technology (MIT) & Energy for Growth Hub), and Associate 
+                                        Professor Jay Taneja from the UMass Amherst) for providing building-level electricity access and consumption 
+                                        estimates and supporting with model evaluation metrics of our results in Kenya.
+                                    </p>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    
+                    <div class="content-box spacing-card pos-relative " id="new-title">
+                        <span class="pin-order">2</span>
+                        <h5>Creating the data set</h5>
+                        <p>The building footprints obtained from Google-Microsoft Open Buildings 
+                            (combined and published by VIDA) are merged with select buildings from OpenStreet Maps building 
+                            footprints. The building
+                            footprint catalog is further enriched by other data from public sources, e.g., the degree of urbanization 
+                            of the neighborhood, or obtained from other closed sources, e.g., estimated building height 
+                            information on the building level.</p>
+                        <p>The following chart outlines the steps
+                            leading to the creation of the enriched building footprint catalogue.
+                        </p>
+                        <div class="card-placeholder"><img src="resources/images/se-all-1.png" width="100%" /></div>
+                    </div>
+
+                    <div class="card-placeholder" style="border: 0px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="mb-0">
+                                                <button class="btn btn-link card-trigger" data-toggle="collapse"
+                                                    data-target="#collapseOne" aria-expanded="false"
+                                                    aria-controls="collapseOne">
+                                                    <p> Ingestion of VIDA-derived Data Set</p>
+                                                    <i class="bx bx-plus"></i>
+                                                </button>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>The basic building catalog is created by ingesting Google-Microsoft
+                                                    Open
+                                                    Buildings data (combined and published by VIDA). 
+                                                    The VIDA-derived data set provides no additional
+                                                    information about the buildings, therefore ingesting it creates a
+                                                    “blank
+                                                    template” to be enriched by later steps.</p>
+                                                <p>The building catalogue is stored in a relational structure, i.e., as
+                                                    a table, containing the polygon of each building given in GPS
+                                                    coordinates, its surface area in square meters, its perimeter in
+                                                    meters, the number of outer walls and the GPS coordinates of the
+                                                    center of the building, called centroid. This centroid is used to
+                                                    identify buildings in what follows.
+                                                </p>
+
+                                                <p> In addition, building footprints are cross-referenced with available
+                                                    OSM information obtaining additional type of buildings (School,
+                                                    Hospital, Airport Facility, etc.) based on OSM area, building and
+                                                    node information available.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="mb-0">
+                                                <button class="btn btn-link card-trigger" data-toggle="collapse"
+                                                    data-target="#collapseTwo" aria-expanded="false"
+                                                    aria-controls="collapseTwo">
+                                                    <p> Building Roof Image Extraction</p>
+                                                    <i class="bx bx-plus"></i>
+                                                </button>
+                                            </h6>
+                                        </div>
+
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+
+                                            <div class="card-body">
+                                                <p>Sentinel-2 images are used to obtain building roof images for every
+                                                    building. Sentinel-2 images are provided as 110x100 km large tiles
+                                                    of
+                                                    Earth’s surface, where clouds are represented as white pixels. To
+                                                    cover
+                                                    the Earth’s surface only and remove any clouds from the images,
+                                                    several
+                                                    images are downloaded of the same region from a pre-defined
+                                                    time-range
+                                                    and merged together into a singular image to fill in cloud covered
+                                                    areas.</p>
+                                                <p>Once proper satellite images are obtained the roof image of each
+                                                    building
+                                                    is cropped. For each building the proper satellite image tile is
+                                                    determined, which contains the building based on its building
+                                                    footprint
+                                                    polygon defined in the building catalogue. The roof image is cropped
+                                                    from the tile and stored for later use, while additional metadata
+                                                    are
+                                                    also collected about the satellite image used to enrich the building
+                                                    data set.
+                                                </p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="mb-0">
+                                                <button class="btn btn-link card-trigger" data-toggle="collapse"
+                                                    data-target="#collapseThree" aria-expanded="false"
+                                                    aria-controls="collapseThree">
+                                                    <p> Urban, Suburban, or Rural Classification</p> <i
+                                                        class="bx bx-plus"></i>
+                                                </button>
+                                            </h6>
+                                        </div>
+
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Global Human Settlement Layer (GHSL) provides a publicly available
+                                                    data
+                                                    layer named Settlement Model (SMOD) grid, which is used to classify
+                                                    buildings into Urban/Suburban/Rural categories based on their
+                                                    location.
+                                                    This layer, represented as a black-and-white image of a country
+                                                    provides
+                                                    a categorization of each 1x1 km large grid cell as a pixel.
+                                                    GHSL-SMOD
+                                                    categorizes each grid cell as one of nine categories, which are
+                                                    simplified for our purposes into Urban, Suburban and Rural grid
+                                                    cells.
+                                                    Each building is classified based on which grid cell it belongs to.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="mb-0">
+                                                <button class="btn btn-link card-trigger" data-toggle="collapse"
+                                                    data-target="#collapseFour" aria-expanded="false"
+                                                    aria-controls="collapseFour">
+                                                    <p> Building Height Calculation</p> <i class="bx bx-plus"></i>
+                                                </button>
+                                            </h6>
+                                        </div>
+
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Open Buildings 2.5D data layer is used to calculate
+                                                    the
+                                                    height of buildings. This data layer is provided in a form of a map,
+                                                    in
+                                                    which an additional black-and-white scale layer indicates the height
+                                                    of
+                                                    buildings. A single pixel of the map represents approximately four
+                                                    meters. Using the footprint of each building the median height of
+                                                    each
+                                                    building is extracted from the map and provided as part of the
+                                                    visualization.</p>
+
+                                                <p>Building height is estimated in meters and as number of floors, based
+                                                    on which the gross floor area of each building is computed in square
+                                                    meters. Each floor is considered to be three meters tall, while the first floor 
+                                                    is considered to be higher, 4.5 meters tall.
+                                                </p>
+
+                                                <p>Previously WSF3DV3 data layer provided by DLR was used to calculate
+                                                    building heights. A single pixel of the map represents approximately ten
+                                                    meters. In early 2025 this soure was changed to Open Buildings 2.5D Temporal Dataset
+                                                    with worldwide coverage to allow easier expansion to new region.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="mb-0">
+                                                <button class="btn btn-link card-trigger" data-toggle="collapse"
+                                                    data-target="#collapseFive" aria-expanded="false"
+                                                    aria-controls="collapseFive">
+                                                    <p> Electricity Consumption Estimates
+                                                    </p>
+                                                    <i class="bx bx-plus"></i>
+                                                </button>
+                                                </h5>
+                                        </div>
+
+                                        <div id="collapseFive" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p><a href="https://www.openenergymaps.org/explore"
+                                                        target="_blank">Open Energy Maps</a> provides electricity access and electricity
+                                                    consumption
+                                                    related
+                                                    estimates for most of the buildings in our footprint catalog in
+                                                    Kenya. Building footprint catalogs used by Open Energy Maps and Open Building
+                                                    Insights are not identical, requiring the use of a matching
+                                                    algorithm to map the building footprints from the two different
+                                                    sources, which are describing the same building.
+                                                </p>
+                                                <p> Electricity access and consumption estimated are ingested to the data set
+                                                    and provided as an attribute for most buildings in Kenya.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="mb-0">
+                                                <button class="btn btn-link card-trigger" data-toggle="collapse"
+                                                    data-target="#collapseSix" aria-expanded="false"
+                                                    aria-controls="collapseSix">
+                                                    <p> Residential or Non-residential Classification Using Inferencing
+                                                    </p>
+                                                    <i class="bx bx-plus"></i>
+                                                </button>
+                                                </h5>
+                                        </div>
+
+                                        <div id="collapseSix" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>During this step each buildings are categorized into residential or
+                                                    non-residential types based on several criteria.</p>
+                                                <p>First, each building being smaller than 20 square meters of area are
+                                                    classified as residential buildings, their <span
+                                                        class="text-technical">type_source</span> is set to area and
+                                                    confidence is set to undefined as it relates to the confidence of
+                                                    the
+                                                    machine learning model, which is not used in this part of the
+                                                    inferencing process.</p>
+                                                <p>Next, the custom classification model evaluates the
+                                                    remaining
+                                                    buildings. For each
+                                                    evaluated building, the fields <span
+                                                        class="text-technical">type</span> and <span
+                                                        class="text-technical">type_source</span> are updated to res /
+                                                    non-res and classification_model, respectively. Furthermore, the
+                                                    model
+                                                    information (<span class="text-technical">model_info</span>) and
+                                                    confidence level of the model's classification choice for the given 
+                                                    building between 0 and 1 (confidence) are presented.</p>
+                                                <p>
+                                                    For more information about this model please see the 
+                                                    <a href="methodology.html">Methodology</a> page.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="data-sources">
+                        <span class="pin-order">3</span>
+                        <h5>Data Sources</h5>
+                        <ul class="card-list">
+                            <li>
+                                <a href="https://registry.opendata.aws/sentinel-2-l2a-cogs/" target="_blank"
+                                    class="heading-link">Sentinel-2
+                                    Cloud-Optimized GeoTIFFs</a>
+                                <br />
+                                <p><a href="https://sentinel.esa.int/web/sentinel/missions/sentinel-2"
+                                        target="_blank">Sentinel-2</a> satellite images are downloaded from the public
+                                    S3
+                                    bucket Sentinel-2 Cloud-Optimized GeoTIFFs containing satellite images of the
+                                    Earth’s surface divided into pre-defined tiles.
+                            </li>
+
+                            <li>
+                                <a href="https://www.dlr.de/en/" target="_blank">Open Buildings 2.5D Temporal Dataset</a><br />
+                                Provides a worldwide coverage of building height data in a raster format with effective spatial resolution of 4 meters
+                                used for the building height calculation process.
+                            </li>
+
+                            <li>
+                                <a href="https://sites.research.google/gr/open-buildings/temporal/" target="_blank">German Aerospace Center
+                                    (DLR)</a><br />
+                                Provides WSF3DV3 data layer that was used for the building height calculation process previously.
+                            </li>
+
+                            <li>
+                                <a href="https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description/"
+                                    target="_blank">Google-Microsoft Open Buildings (combined and published by VIDA)</a><br /> Publicly
+                                available data contain a catalogue of buildings with specific coordinates and polygons
+                                (i.e.
+                                shapes of the buildings) for any given country or region.
+                            </li>
+                            <li>
+                                <a href="https://ghsl.jrc.ec.europa.eu/download.php?ds=smod" target="_blank">GHS
+                                    Settlement Model Grid</a><br /> Publicly available data downloaded as GeoTIF
+                                to
+                                categorize buildings into <span class="tag urban">Urban</span> or <span
+                                    class="tag rural">Rural</span> categories.<br/>
+
+                                    Schiavina, Marcello; Melchiorri, Michele; Pesaresi, Martino (2023): GHS-SMOD R2023A - GHS settlement layers, 
+                                    application of the Degree of Urbanisation methodology (stage I) to GHS-POP R2023A and GHS-BUILT-S R2023A,
+                                     multitemporal (1975-2030). European Commission, Joint Research Centre (JRC) 
+                                     [Dataset] doi: 10.2905/A0DF7A6F-49DE-46EA-9BDE-563437A6E2BA 
+                                     PID: <a href="http://data.europa.eu/89h/a0df7a6f-49de-46ea-9bde-563437a6e2ba ">http://data.europa.eu/89h/a0df7a6f-49de-46ea-9bde-563437a6e2ba</a>.
+                            </li>
+
+
+                            <li>
+                                <a href="https://www.openstreetmap.org" target="_blank">Open Street Map
+                                    (OSM)</a><br /> Publicly available data contain a catalogue of buildings
+                                with
+                                specific coordinates and polygons (i.e. shapes of the buildings). Data are downloaded as
+                                shapefiles (.shp) from <a href="https://www.geofabrik.de/"
+                                    target="_blank">geofabrik.de</a>.
+                            </li>
+
+                            <li>
+                                <a href="https://www.ookla.com/ookla-for-good/open-data" target="_blank">Ookla’s Open Data</a><br /> 
+                                Open data sets available on a complimentary basis to help people make informed decisions around internet 
+                                connectivity and internet speed.
+                            </li>
+
+                            <li>
+                                <a href="https://overturemaps.org/" target="_blank">Overture Maps</a><br /> Publicly available 
+                                data contain a catalogue of buildings with specific coordinates and polygons (i.e. shapes of the buildings).
+                            </li>
+
+                            <li>
+                                <a href="https://www.openenergymaps.org/" target="_blank">Open Energy Maps</a><br /> 
+                                Providing building-level electricity access and consumption estimates for Kenya.
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="content-box spacing-card pos-relative" id="resources">
+                        <span class="pin-order">4</span>
+                        <h5>References</h5>
+                        <p><a href="https://stephenjl.com/pdf/sjl-phd-thesis-final_20230831.pdf"
+                                target=" _blank">Multimodal Data Fusion for Estimating Electricity Access and Demand</a>
+                            by Stephen J. Lee, 2023.</p>
+                        <p><a href="https://doi.org/10.1016/j.rse.2021.112877"
+                                target=" _blank">World Settlement Footprint 3D - A first three-dimensional survey of the global building stock</a>
+                            by Esch, Brzoska, Dech, Leutner, Palacios-Lopez, Metz-Marconcini, Marconcini, Roth and Zeidler, 2022.</p>
+                        <p><a href="https://data.europa.eu/doi/10.2785/706535" target="_blank">European Commission: Eurostat, 
+                            Applying the degree of urbanisation – A methodological manual to define cities, towns and 
+                            rural areas for international comparisons – 2021 edition</a>, Publications Office of the 
+                            European Union, 2021.</p>
+                        <p><a href="https://arxiv.org/abs/2310.11622" target="_blank">High-Resolution Building and Road Detection from Sentinel-2</a>
+                            by W. Sirko, E.A. Brempong, J.T.C. Marcos, A. Annkah, A. Korme, M.A. Hassen, K. Sapkota, T. Shekel, A. Diack, S. Nevo, J. Hickey, J.A. Quinn, 2023.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="side-table-of-content mt100" id="nav-sticky">
+                    <ul>
+                        <li>
+                            <h3 class="mb10">Outline</h3>
+                        </li>
+                        <li><a href="#glossary">Glossary of Building Attributes Provided by OBI</a></li>
+                        <li><a href="#new-title">Creating the Data Set</a></li>
+                        <li><a href="#data-sources">Data Sources</a></li>
+                        </li>
+                        <li><a href="#resources">References</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script
+    src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+<!--Sidebar scripts-->
+<script src="resources/js/sidebar.js"></script>
+</html>
+
+<script>
+    $(document).ready(function () {
+        //    console.log(window.location.href.includes('methodology'));
+        // $('.collapse').collapse()
+    });
+
+
+    // SCROLL
+    window.onscroll = function () { soSticky() };
+    var navbar = document.getElementById("nav-sticky");
+    var s1 = document.getElementById("banner");
+    var sticky = navbar.offsetTop;
+
+    function soSticky() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>

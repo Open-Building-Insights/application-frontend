@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Open Building Insights - SEforALL </title>
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <!--fancy alert-->
+  <!-- Bootstrap CSS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+  <!-- Include Leaflet CSS file -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="resources/css/about.css">
+  <link rel="stylesheet" href="resources/css/sidebar.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-2S40QNN314');
+  </script>
+
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <img class="logo" src="resources/images/logo.png" />
+    </div>
+    <hr class="line">
+    <ul class="nav-list">
+        <li>
+            <a href="index.html">
+                <i class='bx bx-home'></i>
+                <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+        </li>
+        <li>
+            <a href="map.html">
+                <i class='bx bx-map-alt'></i>
+                <span class="links_name">Map</span>
+            </a>
+            <span class="tooltip">Map</span>
+        </li>
+        <div class="toggle-container" style="display: none;">
+          <div class="vertical-toggle">
+              <label class="toggle-switch">
+                  <input type="checkbox" id="mapSwitch">
+                  <span class="slider"></span>
+                  <div class="labels">
+                      <span class="label-top">OBI</span>
+                      <span class="label-bottom">MUG</span>
+                  </div>
+              </label>
+          </div>
+        </div>
+        <li>
+            <a href="about.html">
+                <i class='bx bx-info-circle'></i>
+                <span class="links_name">About</span>
+            </a>
+            <span class="tooltip">About</span>
+        </li>
+        <li>
+            <a href="glossary.html">
+                <i class='bx bx-align-middle'></i>
+                <span class="links_name">Glossary</span>
+            </a>
+            <span class="tooltip">Glossary</span>
+        </li>
+        <li>
+            <a href="methodology.html">
+                <i class='bx bx-shape-circle'></i>
+                <span class="links_name">Methodology</span>
+            </a>
+            <span class="tooltip">Methodology</span>
+        </li>
+
+       <div class="nav-footer">
+            <hr class="line">
+            <li>
+                <a href="share.html">
+                    <i class='bx bx-share-alt'></i>
+                    <span class="links_name">Share</span>
+                </a>
+                <span class="tooltip">Share</span>
+            </li>
+            <li>
+                <a href="feedback.html">
+                    <i class='bx bx-chat'></i>
+                    <span class="links_name">Give Feedback</span>
+                </a>
+                <span class="tooltip">Give Feedback</span>
+            </li>
+            <li>
+                <a href="help.html">
+                    <i class='bx bx-help-circle'></i>
+                    <span class="links_name">Help & Support</span>
+                </a>
+                <span class="tooltip">Help & Support</span>
+            </li>
+            <li>
+                <a href="" id="apiInfo">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">API</span>
+                </a>
+                <span class="tooltip">API</span>
+            </li>
+        </div>
+
+    </ul>
+  </div>
+
+
+
+  <div class="top-banner">
+    <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+        class="link-inline-white">We'd love to hear about
+        it!</a>
+    </p>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="row base-green">
+      <div class="col-md-6">
+        <h1>Learn About <br />
+          <span class="text-accent">Open building</span><br />
+          Insights
+        </h1>
+
+        <div class="section">
+          <div class="row">
+            <div class="col-md-10">
+              <p class="page-description lite">The Open Building Insights is an interactive online platform running on IBM Cloud. 
+                OBI visually consolidates data in a map, providing information related to buildings in 
+                countries addressing urban planning challenges, such as building location, height, footprint 
+                area, and usage type. This visual consolidation makes AI models' output easy to understand 
+                for non-technical users, and empowers stakeholders to make informed decisions about sustainable 
+                urban development.</p>
+            </div>
+          </div>
+
+        </div>
+        <div>
+          <h5>Partner Organisations</h5>
+          <div class="row gap1p5">
+            <div class="align-center vertical-align-center"> <img src="resources/images/logos/logo-dlr.png" alt="DLR"
+                width="100px"></div>
+            <div class="align-center vertical-align-center"><img src="resources/images/logos/logo-seforall.png"
+                alt="SEforAll" width="55px">
+            </div>
+            <div class="align-center vertical-align-center" style="margin-left: 10px;"><a href="https://www.openenergymaps.org/"><img src="resources/images/logos/oemaps_logo_white.svg"
+              alt="OEMAPS" width="75px" margin-right="100px"></a>
+          </div>
+          </div>
+          <div class="row gap1p5">
+            <div class="align-center vertical-align-center">Developed with IBM through the <a class="link-inline-whitegreen" href="https://www.ibm.com/impact/initiatives/ibm-sustainability-accelerator">IBM Sustainability Accelerator</a> program
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 dflex">
+        <div class="video-container">
+          <video id="video" width="100%" height="100%" muted autoplay loop>
+            <source type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <img id="fallback" src="resources/images/hero-image.webp" style="display: none;" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row pad100">
+      <div class="col-md-12">
+        <div class="row section">
+          <div class="col-md-8">
+            <p>Reliable data are indispensable for addressing urban planning gaps.
+              Many governments and their advisors rely on open source, geospatial data 
+              to develop national roadmaps for infrastructure. Well-designed plans enable policymakers and the
+              private sector to swiftly identify communities or buildings in need of intervention based on parameters
+              such as structure type, proximity to existing infrastructure, homeowners' ability to pay for services, and
+              local resource suitability.
+            </p>
+            <p> A crucial data set for effective energy planning is the known building 'footprints' - the locations and
+              sizes of buildings or structures. However, sourcing this
+              data accurately remains challenging in many developing regions. Fortunately, recent advances in AI are creating new opportunities.</p>
+
+            <p class="mb0">
+              Since October 2022, Sustainable Energy for All (SEforALL) has collaborated with IBM to address this data gap. Together, we are developing Open Building Insights, a
+              cloud-based solution that leverages satellite imagery and AI models to provide building footprint data attributes to make such data more actionable for governments in countries still grappling with significant related urban planning
+              challenges. Open Building Insights is available to all through an open-access, web-based interface.
+            </p>
+          </div>
+        </div>
+
+        <!-- How this tool can help you section -->
+        <div class="row section" id="benefits">
+          <div class="col">
+            <h3>Benefits of the tool</h3>
+            <div class="row">
+              <div class="col-md-8">
+                <h6>Engaging with the Open Building Insights empowers stakeholders to make informed decisions
+                  for
+                  sustainable urban development. </h6>
+                <p class="mt30">The key insights provided by the tool - all within an intuitive and accessible framework, 
+                  can support the evaluation of electricity consumption and environmental impact of a specific area, 
+                  the possibilities for optimizing energy efficiency, or planning for future infrastructure developments. 
+                  By adopting this solution, stakeholders can contribute to smarter, more sustainable urban
+                  planning
+                  and, ultimately, a brighter future for communities and the environment. Engaging with the SEforALL
+                  Open
+                  Building Insights empowers stakeholders to make informed decisions for
+                  sustainable urban development.</p>
+              </div>
+            </div>
+
+            <div class="row dflex spacing-card">
+              <div class="col-md-4">
+                <div class="content-box" id="cb-1" aria-expanded="false">
+                  <h4 class="mt40">Efficient Data Consolidation</h4>
+                  <p>The interactive map  consolidates data from Open Buildings 2.5D, 
+                    which estimates buildings' heights, by Open Energy Maps, which<span class="card-elipsis">...</span><span
+                    class="card-read-more"> provides information about electricity 
+                    status and consumption, and by IBM, which determines if a building is residential or non-residential. 
+                    This efficiency in data consolidation streamlines decision-making processes and facilitates a holistic view 
+                    of the urban landscape.
+                    <br /><br />
+                    For the full list of data sources, see the <a href="glossary.html#data-sources">Glossary</a> page.
+                  </p>
+                  <button class="btn-to-link btn-read-more"></button>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="content-box" id="cb-2" aria-expanded="false">
+                  <h4 class="mt40">Granular Insights at Your Fingertips</h4>
+                  <p>The user can also gain access to detailed information at the building level. Information include:
+                    the rooftop area (sq.m), building height (m) and a<span class="card-elipsis">...</span><span
+                      class="card-read-more"> binary classification type (residential Vs non-residential)
+                      along with a prediction confidence level. This granularity enhances the precision of
+                      decision-making processes.</span>
+                  </p>
+                  <button id="btnRM2" class="btn-to-link btn-read-more"></button>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="content-box" id="cb-3" aria-expanded="false">
+                  <h4 class="mt40">Building Attributes</h4>
+                  <p>Open Building Insights
+                    leverages open access geospatial data (OpenStreetMap, Sentinel 2, NICFI, Open Buildings 2.5D)
+                    and Artificial Intelligence (AI) to predict <span class="card-elipsis">...</span><span
+                      class="card-read-more"> building attributes that
+                      are crucial for affecting infrastructure planning. These include building
+                      type classification (residential vs. health facilities, education
+                      institutions, public offices, productive structures - where data are available), electricity access status,
+                      (potential) electricity consumption and energy efficiency of
+                      buildings. <br /><br />This level of detailed information offers insights that are not available elsewhere. By enhancing
+                      our understanding of urban and rural composition, it enables more informed
+                      decision-making in planning efforts.</span>
+                  </p>
+                  <button class="btn-to-link btn-read-more"></button>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row dflex mt30">
+              <div class="col-md-4">
+                <div class="content-box" id="cb-4" aria-expanded="false">
+                  <h4 class="mt40">User-Friendly Interface</h4>
+                  <p>Open Building Insights
+                    presents a user-friendly web interface tailored for visualizing structures with
+                    no registration required. This design prioritizes accessibility, empowering stakeholders to
+                    <span class="card-elipsis">...</span><span class="card-read-more"> explore insights and
+                      analytics for any area of
+                      interest. <br /><br />Moreover, users can download structures with their
+                      associated attributes in multiple formats for further analysis. This
+                      functionality fosters greater engagement and collaboration within the user
+                      community.</span>
+
+                  </p>
+                  <button class="btn-to-link btn-read-more"></button>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="content-box" id="cb-5" aria-expanded="false">
+                  <h4 class="mt40">Empowering Flexible Analysis and Collaboration</h4>
+                  <p>
+                    Open Building Insights
+                    produces detailed GeoJSON files comprising comprehensive building-level
+                    information for the designated area<span class="card-elipsis">...</span><span
+                      class="card-read-more">
+                      of interest. Users have the flexibility to
+                      download these files and conduct ad hoc analyses as required. <br /><br />Additionally, the
+                      option to utilize an API and integrate data into other
+                      applications enhances interoperability, aligning with the ethos of fostering
+                      sharing and collaboration within the sector. This approach promotes
+                      versatility, facilitating informed decision-making and positive outcomes.</span>
+                  </p>
+                  <button class="btn-to-link btn-read-more"></button>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="content-box" id="cb-6" aria-expanded="false">
+                  <h4 class="mt40">Powered by IBM Cloud Technology</h4>
+                  <p>
+                    Open Building Insights runs on IBM Cloud and the IBM AI model was built using the IBM watsonx AI and data platform,<span class="card-elipsis">...</span><span class="card-read-more">
+                      enabling reliability, scalability, and security. Stakeholders can leverage the robustness of the
+                      tool's infrastructure for handling and analyzing vast data sets that can be also taken as input to
+                      other tools.</span>
+                  </p>
+                  <button class="btn-to-link btn-read-more"></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Platforms section -->
+        <div class="row section" id="platforms">
+          <div class="col">
+            <h3>Indicative Case Studies</h3>
+            <div class="row">
+              <div class="col-md-8">
+                <h6>Discover how Open Building Insights is making a difference in communities around the globe. These
+                  success stories highlight real projects where our technology has been instrumental in driving stronger
+                  energy solutions, improving efficiency, and informing policy decisions.</h6>
+              </div>
+            </div>
+          </div>
+
+          <div class="row dflex spacing-card">
+            <div class="col-md-6">
+              <div class="content-box">
+                <div class="card-link">
+                  <h4>Supporting Makueni's County Energy Plan (CEP)</h4>
+                  <p>The Open Building Insights team is collaborating with the World Resource Institute (WRI) to
+                    explore the use of building attributes in the development of the County Energy Plan (CEP) in Makueni
+                    County. </p>
+                </div>
+
+                <a href="" target="_blank" class="card-link" style="display: none;">
+                  <!-- <img src="resources/images/external-link-icon.png" class="content-icon" /> -->
+                  <h4>Supporting Makueni's County Energy Plan (CEP)</h4>
+                  <p>The Open Building Insights team is collaborating with the World Resource Institute (WRI) to
+                    explore the use of building attributes in the development of the County Energy Plan (CEP) in Makueni
+                    County. </p>
+
+                  <!-- <div class="footer">
+                    City Name • Month Date Year
+                  </div> -->
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="content-box">
+                <div class="card-link">
+                  <h4>Energy Efficiency in Buildings for Makueni County</h4>
+                  <p>The Open Building Insights team is collaborating with the Strathmore Energy Research Center (SERC)
+                    to explore the use of Open Building Insights's building attributes in estimating Energy Efficiency
+                    measures for different types of buildings in Makueni County.</p>
+                </div>
+              </div>
+
+              <a href="#" target="_blank" class="card-link" style="display: none;">
+                <div class="content-box">
+                  <img src="resources/images/external-link-icon.png" class="content-icon" />
+                  <h4>Energy Efficiency in Buildings for Makueni County</h4>
+                  <p>The Open Building Insights team is collaborating with the Strathmore Energy Research Center (SERC)
+                    to explore the use of Open Building Insights's building attributes in estimating Energy Efficiency
+                    measures for different types of buildings in Makueni County.</p>
+                  <!-- <div class="footer">
+                    City Name • Month Date Year
+                  </div> -->
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="row dflex mt30">
+            <div class="col-md-6">
+              <a href="https://stephenjl.com/pdf/sjl-phd-thesis-final_20230831.pdf" target="_blank" class="card-link">
+                <div class="content-box">
+                  <img src="resources/images/external-link-icon.png" class="content-icon" />
+                  <h4>Electricity Status and Consumption forecasting</h4>
+                  <p>The Open Building Insights team is collaborating with <a href="https://www.openenergymaps.org/" target="_blank">Open Energy Maps</a>
+                    to expand the list of building attributes with
+                    the
+                    adoption of new Machine Learning models. More specifically, Open Energy Maps's LltLDF model is being used to
+                    estimate
+                    electricity status and potential electricity consumption at a building level, for millions of
+                    buildings
+                    in Kenya. In parallel, UMASS is leveraging the high volume of labelled building data in the country
+                    to
+                    validate the results and improve the accuracy of the classification model.</p>
+                  <!-- <div class="footer">
+                    City Name • Month Date Year
+                  </div> -->
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <div class="card-link">
+                <div class="content-box">
+                  <h4>Planning and Monitoring Energy Transition Strategies in Public Buildings</h4>
+                  <p>The Open Building Insights team is collaborating with Kenya's State Department of Public Works
+                    to use the OBI tool in planning and monitoring energy transition 
+                    strategies for public buildings. This collaboration begins with a pilot focused on healthcare 
+                    facilities in Makueni County, aimed at improving the targeting of energy interventions. Additionally, 
+                    it involves updating and hosting new building data, gathered through primary data collection, within 
+                    the OBI database.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row section round-edge to-modal" onclick="window.open('feedback.html', '_self')">
+          <div class="col-md-10 band-emerald-green">
+            <div class="pad30">
+              <h6>Are you using the tool for a specific project, and you would like it to be spotlighted here? ​</h6>
+              <p>We would love to hear more! Please contact us at <a href="mailto:uiep@seforall.org" class="dark-link">
+                  uiep@seforall.org
+                </a></p>
+            </div>
+          </div>
+          <div class="col-md-2 band-base-green vertical-align-center ">
+            <div class="align-center">
+              <img src="resources/images/arrow-right.png" style="width: 120px;" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  <script>
+
+    function readMore() {
+      var dots = document.getElementById("card-elipsis");
+      var moreText = document.getElementById("card-show-more");
+      var btnText = document.getElementById("myBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+      }
+    }
+
+
+    $(".btn-read-more").on("click", function (e) {
+      var targetDivParentd = e.target.closest(".content-box").id;
+      console.log(targetDivParentd)
+      if ($("#" + targetDivParentd).attr("aria-expanded") == "true") {
+        $("#" + targetDivParentd).removeClass("active");
+        $("#" + targetDivParentd).attr("aria-expanded", "false");
+      } else {
+        $("#" + targetDivParentd).addClass("active");
+        $("#" + targetDivParentd).attr("aria-expanded", "true");
+      }
+    });
+
+
+  </script>
+</body>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script
+  src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+<!--Sidebar scripts-->
+<script src="resources/js/sidebar.js"></script>
+
+<script>
+  const videoUrl = "resources/images/hero-video.mp4";
+  const MAX_LOAD_TIME = 1000; 
+
+  const video = document.getElementById("video");
+  const fallback = document.getElementById("fallback");
+
+  async function testConnection() {
+    const startTime = Date.now();
+
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), MAX_LOAD_TIME);
+
+      const response = await fetch(videoUrl, {
+        method: "GET",
+        headers: {
+          Range: "bytes=0-100000" 
+        },
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const endTime = Date.now();
+      const loadTime = endTime - startTime;
+
+      if (!response.ok || loadTime > MAX_LOAD_TIME) {
+        throw new Error("Slow or failed connection");
+      }
+
+      // Conexão OK: carrega o vídeo normalmente
+      video.src = videoUrl;
+    } catch (e) {
+      console.warn("Weak connection detected. Showing image instead of video.", e);
+      fallback.style.display = "block";
+      video.style.display = "none";
+    }
+  }
+
+  testConnection();
+</script>
+</html>

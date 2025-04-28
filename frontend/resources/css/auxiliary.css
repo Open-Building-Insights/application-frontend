@@ -1,0 +1,10 @@
+.page-wrapper {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    margin-left: 75px;
+    transition: all 0.5s ease;
+}
+
+.page-wrapper.active {
+    margin-left: 242px;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Open Building Insights - SEforALL </title>
+
+    <link rel="stylesheet" href="resources/css/intro.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+</head>
+
+<body>
+    <div id="mobileAlert" class="mobile-alert">
+        <p>For the best experience, please access the website on a computer. The functionality is optimized for desktop devices.</p>
+        <button id="closeAlert">Close</button>
+    </div>
+    <div style="width: 100%; height: 100vh; position: relative;">
+        <div class="image-container">
+            <img class="blurred-image" src="resources/images/gradient_background.jpg" />
+        </div>
+
+        <img class="logo" src="resources/images/logo.png" />
+
+        <div class="centered-container">
+            <div class="title-container">
+                <div class="accent-line left"></div>
+                <div class="title">OPEN BUILDING INSIGHTS</div>
+                <div class="accent-line right"></div>
+            </div>
+
+            <div class="description-text">
+                The Open Building Insights is an interactive online platform running on IBM Cloud. 
+                OBI visually consolidates data in a map, providing information related to buildings in 
+                countries addressing urban planning challenges, such as building location, height, footprint 
+                area, and usage type. This visual consolidation makes AI models' output easy to understand 
+                for non-technical users, and empowers stakeholders to make informed decisions about sustainable 
+                urban development.
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="button-container"> <!-- This container will hold the buttons -->
+                    <a href="map.html" class="btn link-primary">Enter</a>
+                    <a href="about.html" id="learnMore" class="btn link-outline">Learn
+                        More</a>
+                </div>
+            </div>
+            <div class="desktop-notice">For best experience, view on a desktop</div>
+            <div class="footer align-left">
+                <h6>Supported and built by</h6>
+                <div class="logo-group-container">
+                    <div class="align-center vertical-align-center">
+                        <img src="resources/images/logos/logo-dlr.png" alt="DLR" width="55px">
+                        <a href="https://www.openenergymaps.org/"><img src="resources/images/logos/oemaps_logo_white.svg" alt="OEMAPS" width="55px"></a>
+                    </div>
+                    <div class="align-center vertical-align-center accelerator-notice">IBM through the <a class="link-inline-whitegreen" href="https://www.ibm.com/impact/initiatives/ibm-sustainability-accelerator">IBM Sustainability Accelerator</a> program
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function getCookie(name) {
+        let cookieArray = document.cookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            let cookiePair = cookieArray[i].split('=');
+            if (name === cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
+    if (!getCookie("indexVisited")) {
+        const d = new Date();
+        d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = "indexVisited=" + "true" + ";" + expires + ";path=/";
+    }
+    // } else if (getCookie("survey")) {
+    //     window.location.href = 'map.html';
+    // }
+    document.addEventListener("DOMContentLoaded", function () {
+    //only for mobile device alert
+    if (window.innerWidth <= 768) {
+      const mobileAlert = document.getElementById("mobileAlert");
+      mobileAlert.style.display = "block";
+  
+      const closeButton = document.getElementById("closeAlert");
+      closeButton.addEventListener("click", function () {
+        mobileAlert.style.display = "none";
+      });
+    }
+});
+</script>
+
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Open Building Insights - SEforALL </title>
+    <link rel="stylesheet" href="resources/css/share.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!--fancy alert-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <!-- Include Leaflet CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/css/share.css">
+    <link rel="stylesheet" href="resources/css/sidebar.css">
+    <link rel="stylesheet" href="resources/css/auxiliary.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S40QNN314"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-2S40QNN314');
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="resources/images/logo.png" />
+        </div>
+        <hr class="line">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="map.html">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <div class="toggle-container" style="display: none;">
+                <div class="vertical-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mapSwitch">
+                        <span class="slider"></span>
+                        <div class="labels">
+                            <span class="label-top">OBI</span>
+                            <span class="label-bottom">MUG</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <li>
+                <a href="about.html">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="glossary.html">
+                    <i class='bx bx-align-middle'></i>
+                    <span class="links_name">Glossary</span>
+                </a>
+                <span class="tooltip">Glossary</span>
+            </li>
+            <li>
+                <a href="methodology.html">
+                    <i class='bx bx-shape-circle'></i>
+                    <span class="links_name">Methodology</span>
+                </a>
+                <span class="tooltip">Methodology</span>
+            </li>
+    
+           <div class="nav-footer">
+                <hr class="line">
+                <li>
+                    <a href="share.html">
+                        <i class='bx bx-share-alt'></i>
+                        <span class="links_name">Share</span>
+                    </a>
+                    <span class="tooltip">Share</span>
+                </li>
+                <li>
+                    <a href="feedback.html">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Give Feedback</span>
+                    </a>
+                    <span class="tooltip">Give Feedback</span>
+                </li>
+                <li>
+                    <a href="help.html">
+                        <i class='bx bx-help-circle'></i>
+                        <span class="links_name">Help & Support</span>
+                    </a>
+                    <span class="tooltip">Help & Support</span>
+                </li>
+                <li>
+                    <a href="" id="apiInfo">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">API</span>
+                    </a>
+                    <span class="tooltip">API</span>
+                </li>
+            </div>
+    
+        </ul>
+    </div>
+
+
+    <div class="top-banner">
+        <p tabindex="0"><b>Share Your Success Stories!</b> Have you used our tool on a project? <a href="feedback.html"
+                class="link-inline-white">We'd love to hear about
+                it!</a>
+        </p>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="page-banner">
+                    <h1>Share</h1>
+                    <p class="page-description"><b>Open Building Insights</b>, as an open-source tool, in this way
+                        publishes its entire data set in a
+                        geoParquet format. See below the detailed definition of the geoParquet format.</p>
+
+                    <p>Considering the size of the data set the granular building information
+                        is provided on a country
+                        level and for ease of manipulation it is also available on a County or District level.</p>
+
+                    <p>Open Building Insights data is shared under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Data Commons Open Database License (ODbL) v1.0</a> license.</p>
+
+                    <div class="row dflex mt30 row-wrapper">
+                        <div class="col-md-4">
+                            <div class="content-box-icon clickable" id="downloadDatasets">
+                                <img src="resources/images/download.svg" />
+                                <p> Download the data set</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" download id="hiddenREADMEDownloadLink" style="display: none;">Download README</a>
+                </div>
+                <div class="page-content">
+                    <div class="row-wrapper">
+                        <!-- <h> -->
+                        <h5>General Information</h5>
+                        <p>The <span class="text-technical">id</span> attribute provides a unique value for each
+                            building composed of the <span class="text-technical">longitude</span> and
+                            <span class="text-technical">latitude</span> attributes serving as a unique identifier
+                            of
+                            the building. Attribute <span class="text-technical">latitude</span>
+                            refers to the latitude of the centroid of the building footprint polygon. Similarly,
+                            <span class="text-technical">longitude</span> refers to the longitude of the centroid
+                            of the building footprint polygon.
+                        </p>
+                        <p>Attribute <span class="text-technical">geometry</span> provides the definition of the
+                            building footprint polygon as acquired
+                            from
+                            the source data set, while attribute <span class="text-technical">
+                                area_in_meters</span>
+                            provides the pre-computed size of the
+                            building surface area in square meters.</p>
+
+                    </div>
+
+                    <div class="row-wrapper">
+                        <h5>Footprint Source Information</h5>
+                        <p>Attribute <span class="text-technical">footprint_source</span> distinguishes the source
+                            the building footprint was obtained
+                            from.
+                            It has three possible values: <span class="text-technical">google</span>, <span
+                                class="text-technical">microsoft</span>
+                            and <span class="text-technical">osm</span> referencing Google’s Open
+                            Buildings,
+                            Microsoft’s Building Footprints and Open Street Maps respectively.
+                        </p>
+                        <p>For those buildings, which are obtained from Google’s Open Buildings data set attribute
+                            <span class="text-technical">vida_confidence</span> provides the percentage value how
+                            confident Google is that the polygon
+                            represents a building. In the case the building is obtained from Microsoft’s Building
+                            Footprints or Open Street Maps the value is set to zero.
+                        </p>
+                        <p>Open Street Maps provides a wide range of interesting attributes for each building, such
+                            as
+                            its <span class="text-technical">name</span>, <span class="text-technical">type</span>
+                            and <span class="text-technical">building
+                                classification</span>, which are ingested into the dataset
+                            alongside
+                            the Open Street Maps provided unique building identifier as attributes <span
+                                class="text-technical">osm_name</span>,
+                            <span class="text-technical">osm_type</span>,
+                            <span class="text-technical">osm_building</span> and <span
+                                class="text-technical">osm_id</span>. Additional tags for buildings may be
+                            provided in the
+                            <span class="text-technical">osm_other_tags</span>
+                            attribute. These attributes are filled only for those buildings, which are directly
+                            sourced
+                            from Open Street Maps and are left empty for buildings from other sources.
+                        </p>
+                    </div>
+
+                    <div class="row-wrapper">
+                        <h5>Building Height</h5>
+                        <p>For each building couple of different height estimates are provided. The maximal
+                            estimated
+                            height of the building can be found in the <span class="text-technical">height_max
+                                attribute</span>. Similarly, the
+                            estimated
+                            median height and the estimated mean height of the building can be found in the
+                            <span class="text-technical">height_median</span> and <span
+                                class="text-technical">height_mean</span> attributes respectively. The <span
+                                class="text-technical">height</span>
+                            attribute provides the
+                            estimated height of the building in terms of storeys. By definition a single storey of a
+                            building is defined to be three meters tall and all buildings require to have at least
+                            one
+                            storey. This value is computed by rounding the estimated mean height to multiples of
+                            three.
+                        </p>
+                    </div>
+
+                    <div class="row-wrapper">
+                        <h5>SMOD Layer</h5>
+                        <p>Each building is cross referenced with Global Human Settlement’s Settlement Model grid.
+                            The
+                            <span class="text-technical">ghsl_smod</span> attribute represents the GHS
+                            classification of the area the building belongs
+                            to
+                            based on its location. Where the layer does not provide any value the Very low density
+                            rural
+                            grid cell value is used. These values are simplified into <span
+                                class="tag urban">Urban</span>, <span class="tag suburban">Suburban</span> and <span
+                                class="tag rural">Rural</span>
+                            categories provided in the <span class="text-technical">urban_split</span> attribute.
+                        </p>
+
+                    </div>
+
+                    <div class="row-wrapper">
+                        <h5>Classification</h5>
+                        <p>Each building is classified into residential and non-residential, denoted by the
+                            <span class="text-technical">classification_type</span> attribute using values res and
+                            non-res respectively. This
+                            classification
+                            is done by a machine learning model for buildings, which have over 20 square meters of
+                            area.
+                            The name of the machine learning model is stored in the <span
+                                class="text-technical">ml_model</span> attribute and its
+                            confidence with the classification is stored in the related <span
+                                class="text-technical">ml_confidence</span> attribute. The
+                            fact, that a building is classified by a machine learning model is denoted by providing
+                            <span class="text-technical">classification_model</span> value as the <span
+                                class="text-technical">classification_source</span> attribute. In case the
+                            building
+                            has
+                            lower building area than 20 square meters the building is classified to be a residential
+                            building by default, a fact denoted by setting the <span
+                                class="text-technical">classification_source</span> attribute to
+                            area.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to download data set -->
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        function showStatesList(event) {
+            let selectedCountry = $('#selectCountry').val();
+            if (selectedCountry.includes('India')) {
+                $('#MahaDropdown').css({ display: 'block' });
+            } else {
+                $('#MahaDropdown').css({ display: 'none' })
+            }
+            showDistrictList();
+        }
+
+        $('#stateDropdown').change(function(event) {
+            console.log('event: ' + event)
+        })
+
+        // Display list of avilable district
+        function showDistrictList() {
+            let selectedCountry = $('#selectCountry').val(); // Store current selected country
+            let selectedState = $('#selectState').val(); // Store current selected state
+
+            $('.container-sub-district').css({display: 'none'}); // Hide sub district container
+
+            $.getJSON("resources/assets/geoparquets_map.json", function (data) {
+
+                const districtList = (selectedCountry == 'India')
+                                    ? data[selectedCountry][selectedState]
+                                    : data[selectedCountry];
+                
+
+                let ddDistrict = [];
+
+                $('#dataCount').text(Object.keys(districtList).length + " data sets available")
+
+                $.each(districtList, function (text, url) {
+                    if (url instanceof Object) {
+                        ddDistrict.push('<a data-sub-district="true">' + text + '</a>')    
+                    } else {
+                        ddDistrict.push('<a href="' + url + '">' + text + '</a>')
+                    }
+                });
+
+                $('#selectDistrict').empty();
+                $('#selectDistrict').append(ddDistrict);
+
+                const selectDistrict = document.getElementById("selectDistrict");
+                let newSelectDistrict = selectDistrict.cloneNode(true);
+                selectDistrict.parentNode.replaceChild(newSelectDistrict, selectDistrict);
+                newSelectDistrict.addEventListener('click', function (event) {
+                    
+                    if (event.target.getAttribute('data-sub-district') == "true") {
+                        return showSubDistrictsList(data[selectedCountry][selectedState][event.target.textContent]);
+                    }
+
+                    if (event.target.tagName.toLowerCase() === 'a') {
+                        $('.container-sub-district').css({display: 'none'}); // Hide sub district container
+                        document.getElementById('hiddenREADMEDownloadLink').setAttribute('href', 'README.txt');
+                        document.getElementById('hiddenREADMEDownloadLink').setAttribute('download', 'README.txt');
+                        document.getElementById('hiddenREADMEDownloadLink').click();
+                        let shareDownload = {};
+                        shareDownload.country = selectedCountry;
+                        shareDownload.href = event.target.getAttribute('href');
+                        shareDownload.text = event.target.textContent;
+                        shareDownload.date = (new Date()).toString().split(' ').splice(1, 4).join(' ');
+                        $.ajax({
+                            type: 'POST',
+                            url: `${apiUrl}/shareDownloads`,
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({
+                                shareDownload
+                            }),
+                            dataType: 'json',
+                        }).done(function (result) {
+                        }).fail(function () {
+                            console.log("failed")
+                        });
+                    }
+                });
+            }).done(function () {
+                // your rest of the code
+            });
+        }
+
+        // Display list of available countries
+        function showCountryList() {
+            console.log("Rendering countries...")
+            let firstItem;
+            $.getJSON("resources/assets/geoparquets_map.json", function (data) {
+                let ddCountry = [];
+                for (var i = 0; i < Object.keys(data).length; i++) {
+                    ddCountry.push('<option value="' + Object.keys(data)[i] + '">' + Object.keys(data)[i] + '</option>');
+                }
+                $('#selectCountry').append(ddCountry);
+                showStatesList();
+            }).done(function () {
+            });
+
+        }
+
+        // Displat download data set pop out
+        $("#downloadDatasets").on("click", function () {
+            Swal.fire({
+                html: `
+                <h5 class="headlinetest" >Select an area data set to download</h5>
+                <div class="row" style="padding-bottom: 30px">
+                    <div class="col-sm-4">
+                        <p class="superscript">Select an available country</p>
+                        <select id="selectCountry" onchange="showStatesList()">
+                        </select>
+                        <div id="MahaDropdown" style="display: none; margin-top: 10px;">
+                            <p class="superscript">CHOOSE AN AVAILABLE STATE</p>
+                            <select id="selectState" onchange="showDistrictList()">
+                                <option selected value="Assam"> Assam </option>
+                                <option value="Jharkhand"> Jharkhand </option>
+                                <option value="Kerala"> Kerala </option>
+                                <option value="Madhya_Pradesh"> Madhya Pradesh </option>
+                                <option value="Maharashtra"> Maharashtra </option>
+                                <option value="Mizoram"> Mizoram </option>
+                                <option value="Nagaland"> Nagaland </option>
+                                <option value="Tamil_Nadu"> Tamil Nadu </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="superscript pad-0-20">Select a district</p>
+                        <div id="selectDistrict">
+                        </div>
+                        <p id="dataCount" class="superscript align-right pad-t10">0 items available</p>
+                    </div>
+                    <div class="col-sm-4 container-sub-district">
+                        <p class="superscript pad-0-20">Select a sub district</p>
+                        <div id="selectSubDistrict">
+                        </div>
+                        <p id="dataCountSubDistrict" class="superscript align-right pad-t10">0 items available</p>
+                    </div>
+                </div>
+              `,
+                showCloseButton: true,
+                showConfirmButton: false,
+                width: '800px',
+                customClass: 'modal-obi',
+                didOpen: () => {
+                    showCountryList();
+                }
+            });
+        });
+
+        function showSubDistrictsList(listSubDistrict) {
+
+            let ddDistrict = [];
+
+            $('#dataCountSubDistrict').text(Object.keys(listSubDistrict).length + " data sets available")
+
+            $.each(listSubDistrict, function (text, url) {
+                ddDistrict.push('<a href="' + url + '">' + text + '</a>')
+            });
+
+            $('#selectSubDistrict').empty();
+            $('#selectSubDistrict').append(ddDistrict.reverse());
+
+
+            const selectSubDistrict = document.getElementById("selectSubDistrict");
+            let newSelectSubDistrict = selectSubDistrict.cloneNode(true);
+            selectSubDistrict.parentNode.replaceChild(newSelectSubDistrict, selectSubDistrict);
+
+            $('.container-sub-district').css({display: 'block'});
+            
+            newSelectSubDistrict.addEventListener('click', function (event) {
+                if (event.target.tagName.toLowerCase() === 'a') {
+                    document.getElementById('hiddenREADMEDownloadLink').setAttribute('href', 'README.txt');
+                    document.getElementById('hiddenREADMEDownloadLink').setAttribute('download', 'README.txt');
+                    document.getElementById('hiddenREADMEDownloadLink').click();
+                    let shareDownload = {};
+                    shareDownload.country = selectedCountry;
+                    shareDownload.href = event.target.getAttribute('href');
+                    shareDownload.text = event.target.textContent;
+                    shareDownload.date = (new Date()).toString().split(' ').splice(1, 4).join(' ');
+                    $.ajax({
+                        type: 'POST',
+                        url: `${apiUrl}/shareDownloads`,
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({
+                            shareDownload
+                        }),
+                        dataType: 'json',
+                    }).done(function (result) {
+                    }).fail(function () {
+                        console.log("failed")
+                    });
+                }
+            });
+        }
+    </script>
+
+</body>
+
+<script src="resources/js/sidebar.js"></script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script
+    src="https://api.jawg.io/libraries/jawg-places@latest/jawg-places.js?access-token=JYn3b6KzUfba8QYGL9L41SeboJucXEXTJoyAZbI1HIBlaVbcrKJukiACEXyPwCgQ"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<!--Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- Turf -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+<!-- Notifications JS -->
+<script src="resources/js/notifications.js"></script>
+</html>
